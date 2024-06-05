@@ -83,13 +83,18 @@
     </RelativeLayout>
 
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/navigation"
+        android:background="#353550" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/test_line"
+        android:background="@color/Transparent"
         app:itemIconTint="@drawable/icon_tint"
         app:itemTextColor="@drawable/icon_tint"
         app:labelVisibilityMode="labeled"
