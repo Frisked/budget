@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.splashscreen.SplashScreen;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,11 +24,12 @@ public class MainActivity extends AppCompatActivity {
     int click = 1;
     private boolean keep = true;
     private final int DELAY = 2000;
-    EditText password;
+    EditText email,password;
     LinearLayout linear_layout;
     SplashScreen screen;
     ImageButton view;
     Button sign;
+    String email_input,password_input;
 
 
     @Override
@@ -75,15 +77,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Plan(View view) {
-        Intent i = new Intent(MainActivity.this,profile.class);
-        startActivity(i);
-        finish();
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.pass);
+
+         email_input = email.getText().toString();
+         password_input = password.getText().toString();
+
+        if (email_input.isEmpty() || password_input.isEmpty()) {
+            email.setHintTextColor(getColor(R.color.Red));
+            password.setHintTextColor(getColor(R.color.Red));
+
+        } else {
+            Intent i = new Intent(MainActivity.this, profile.class);
+            startActivity(i);
+            finish();
+        }
     }
 
     public void sign_up_menu(View view) {
         Intent i = new Intent(MainActivity.this,sign_up2.class);
         startActivity(i);
-        finish();
     }
 
 
@@ -91,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     private void SplashSceen() {
         screen.setKeepOnScreenCondition(() -> keep);
         Handler handler = new Handler();
-        handler.postDelayed(() -> keep = false, DELAY);;
+        handler.postDelayed(() -> keep = false, DELAY);
     }
 
 
