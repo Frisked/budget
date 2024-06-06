@@ -20,10 +20,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MainActivity extends AppCompatActivity {
     int click = 1;
     private boolean keep = true;
-    private final int DELAY = 2000;
+    private final int DELAY = 1000;
     EditText email,password;
     LinearLayout linear_layout;
     SplashScreen screen;
@@ -83,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
          email_input = email.getText().toString();
          password_input = password.getText().toString();
 
-        if (email_input.isEmpty() || password_input.isEmpty()) {
+        if (email_input.isEmpty() || password_input.isEmpty() || !isValidEmail(email_input)) {
             email.setHintTextColor(getColor(R.color.Red));
             password.setHintTextColor(getColor(R.color.Red));
 
@@ -109,6 +112,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+    public static boolean isValidEmail(String email) {
+        String EMAILREGEX = "^[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        Pattern pattern = Pattern.compile(EMAILREGEX);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
 
 
 }
