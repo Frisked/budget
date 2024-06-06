@@ -7,19 +7,36 @@
     tools:context=".Planner"
     android:background="@color/black">
 
-    <TextView
-        android:id="@+id/title3"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:drawableStart="@drawable/baseline_arrow_back_ios_new_24"
-        android:drawableEnd="@drawable/baseline_add_24"
-        android:text="Planner"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="40dp"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        >
 
+
+
+        <TextView
+            android:id="@+id/title3"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:text="Planner"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_add_24"
+            android:background="@color/Transparent"
+            android:layout_weight="1"
+            />
+
+
+    </LinearLayout>
     <RelativeLayout
         android:layout_marginTop="150dp"
         android:layout_width="300dp"
