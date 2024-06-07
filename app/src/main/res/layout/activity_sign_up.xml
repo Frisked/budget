@@ -105,7 +105,6 @@
         android:layout_below="@id/contact_number"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-
         android:background="@drawable/next_button_background"
         android:text="Sign Up"
         android:textColor="@color/text_sign_up_pressed" />

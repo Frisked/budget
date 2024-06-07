@@ -11,6 +11,8 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout linear_layout;
     SplashScreen screen;
     ImageButton view;
-    Button sign;
+    Button sign, log;
     String email_input,password_input;
 
 
@@ -50,9 +52,20 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.pass);
         linear_layout = findViewById(R.id.lay_lin);
         sign = findViewById(R.id.Sign);
+        log = findViewById(R.id.Log);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.pass);
+        email_input = email.getText().toString();
+
+        log.setEnabled(false);
+
+
+
 
         Drawable background = ContextCompat.getDrawable(this, R.drawable.textfield_selected);
         Drawable background2 = ContextCompat.getDrawable(this, R.drawable.circle);
+
+
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,23 +95,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+       ButtonDisabler(email,password,log);
+
+
     }
 
     public void Plan(View view) {
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.pass);
 
-         email_input = email.getText().toString();
-         password_input = password.getText().toString();
-
-        if (email_input.isEmpty() || password_input.isEmpty() || !isValidEmail(email_input)) {
-            email.setHintTextColor(getColor(R.color.Red));
-            password.setHintTextColor(getColor(R.color.Red));
-
-        } else {
+        email_input = email.getText().toString();
+        password_input = password.getText().toString();
+        if (isValidEmail(email_input)) {
             Intent i = new Intent(MainActivity.this, profile.class);
             startActivity(i);
             finish();
+
+        } else {
+            email.setHintTextColor(getColor(R.color.Red));
+            password.setHintTextColor(getColor(R.color.Red));
         }
     }
 
@@ -116,14 +129,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
     public static boolean isValidEmail(String email) {
-        String EMAILREGEX = "^[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        String EMAILREGEX = "^[a-zA-Z0-9.%+-]+@[a-zA-Z0-9]+\\.?[a-zA-Z]{2,}$";
         Pattern pattern = Pattern.compile(EMAILREGEX);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+
+
+
+
+    public void ButtonDisabler(EditText email,EditText password,Button log) {
+
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // No action needed here
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // No action needed here
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Enable the button if both EditTexts have input, disable if not
+                log.setEnabled(!email.getText().toString().trim().isEmpty() &&
+                        !password.getText().toString().trim().isEmpty());
+            }
+        };
+
+        email.addTextChangedListener(textWatcher);
+        password.addTextChangedListener(textWatcher);
+    }
+
+
 
 
 }

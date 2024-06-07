@@ -84,16 +84,18 @@
         android:textColor="@color/white" />
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/Log"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/pass"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
+        android:background="@drawable/next_button_background"
         android:onClick="Plan"
         android:text="Login"
-        android:textColor="@color/white" />
+        android:textColor="@color/text_sign_up_pressed" />
+
 
     <Button
         android:id="@+id/Sign"
