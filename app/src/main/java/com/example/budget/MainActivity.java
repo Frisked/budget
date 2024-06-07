@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public static boolean isValidEmail(String email) {
-        String EMAILREGEX = "^[a-zA-Z0-9.%+-]+@[a-zA-Z0-9]+\\.?[a-zA-Z]{2,}$";
+        String EMAILREGEX = "^[a-zA-Z0-9.%+-]+@[a-zA-Z0-9]+\\.{1}[a-zA-Z]{2,}$";
         Pattern pattern = Pattern.compile(EMAILREGEX);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
