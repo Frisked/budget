@@ -39,7 +39,7 @@
         android:layout_height="40dp"
         android:layout_below="@id/username"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/circle"
         android:orientation="horizontal"
         >
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/username"
         android:layout_alignLeft="@id/lay_lin"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:text="Password"
         android:textColor="@color/white" />
 
@@ -62,7 +62,7 @@
         android:layout_height="40dp"
         android:layout_below="@id/username"
         android:layout_alignStart="@id/lay_lin"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/sub"
         android:ems="10"
         android:hint="Enter you Password"
@@ -89,7 +89,7 @@
         android:layout_height="40dp"
         android:layout_below="@id/lay_lin"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/circle"
         android:orientation="horizontal"
         >
@@ -102,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/lay_lin"
         android:layout_alignLeft="@id/lay_lin2"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:text="Confirm Password"
         android:textColor="@color/white" />
 
@@ -112,7 +112,7 @@
         android:layout_height="40dp"
         android:layout_below="@id/lay_lin"
         android:layout_alignStart="@id/lay_lin"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/sub"
         android:ems="10"
         android:hint="Enter you Password"
@@ -158,4 +158,45 @@
         android:background="@drawable/next_button_background"
         android:src="@drawable/next_button_icon_background"
         />
+
+    <TextView
+        android:id="@+id/alert_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username"
+        android:layout_alignStart="@id/username"
+        android:layout_marginStart="10dp"
+        android:drawableStart="@drawable/error_icon"
+        android:text="Invalid Email"
+        android:textColor="@color/Error_color"
+        android:textSize="12sp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/alert_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/error_icon"
+        android:text="Invalid Email*"
+        android:layout_below="@id/pass"
+        android:layout_alignStart="@id/username"
+        android:textColor="@color/Error_color"
+        android:visibility="invisible"
+        android:layout_marginStart="10dp"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/alert_password2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Invalid Email"
+        android:layout_below="@id/pass2"
+        android:layout_alignStart="@id/username"
+        android:textColor="@color/Error_color"
+        android:visibility="invisible"
+        android:layout_marginStart="10dp"
+        android:drawableStart="@drawable/error_icon"
+        android:textSize="12sp"/>
+
+
 </RelativeLayout>

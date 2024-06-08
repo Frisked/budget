@@ -27,11 +27,11 @@
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/text_selection_background"
         android:ems="10"
         android:hint="San Roque Quezon City, Metro Manila"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:layout_below="@id/username"
@@ -42,7 +42,7 @@
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/text_selection_background"
         android:ems="10"
         android:hint="09215592132"
@@ -50,7 +50,8 @@
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:layout_below="@id/address"
-        android:textSize="13dp" />
+        android:textSize="13dp"
+        android:maxLength="11"/>
 
     <TextView
         android:id="@+id/viewEmail"
@@ -70,7 +71,7 @@
         android:layout_alignLeft="@id/username"
         android:text="Address"
         android:layout_below="@id/username"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:textColor="@color/white"
         />
 
@@ -81,7 +82,7 @@
         android:layout_alignLeft="@id/username"
         android:text="Contact Number"
         android:layout_below="@id/address"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:textColor="@color/white"
         />
 

@@ -11,4 +11,5 @@
     <color name="Transparent">#00000000</color>
     <color name="light_green">#40A578</color>
     <color name="Hold_Button">#5F5F5F</color>
+    <color name="Error_color">#f15e6c</color>
 </resources>

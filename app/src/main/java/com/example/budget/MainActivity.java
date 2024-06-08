@@ -139,30 +139,27 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void ButtonDisabler(EditText email,EditText password,Button log) {
-
-        TextWatcher textWatcher = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // No action needed here
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // No action needed here
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // Enable the button if both EditTexts have input, disable if not
-                log.setEnabled(!email.getText().toString().trim().isEmpty() &&
-                        !password.getText().toString().trim().isEmpty());
-            }
-        };
-
-        email.addTextChangedListener(textWatcher);
-        password.addTextChangedListener(textWatcher);
-    }
+        public void ButtonDisabler(EditText email,EditText password,Button log) {
+    
+            TextWatcher textWatcher = new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+    
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                }
+    
+                @Override
+                public void afterTextChanged(Editable s) {
+                    log.setEnabled(!email.getText().toString().trim().isEmpty() &&
+                            !password.getText().toString().trim().isEmpty());
+                }
+            };
+    
+            email.addTextChangedListener(textWatcher);
+            password.addTextChangedListener(textWatcher);
+        }
 
 
 
