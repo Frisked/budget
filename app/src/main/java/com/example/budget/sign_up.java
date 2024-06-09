@@ -59,7 +59,9 @@ public class sign_up extends AppCompatActivity {
 
                 if (isString(username_input) && isNumberValid(contact_input)) {
                     Intent main_page = new Intent(sign_up.this,profile.class);
+                    main_page.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(main_page);
+
 
                 }
 

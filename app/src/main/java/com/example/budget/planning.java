@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -15,6 +17,15 @@ public class planning extends AppCompatActivity {
         setContentView(R.layout.activity_planning);
         BottomNavigationView bottom_nav = findViewById(R.id.navigation);
         bottom_nav.setSelectedItemId(R.id.planner);
+        ImageView add = findViewById(R.id.add_btn);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(planning.this,main_plan.class);
+                startActivity(i);
+            }
+        });
 
         bottom_nav.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.profile) {

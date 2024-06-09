@@ -1,10 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".main_plan"
-    android:background="@color/black">
+    android:background="@color/black"
+    android:padding="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id ="@+id/budget_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:text="Title"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:padding="2dp"
+        />
+
+
+    <ImageView
+        android:id ="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_back_ios_new_24"
+        android:padding="10dp"
+        />
+
+
+    <TextView
+        android:id ="@+id/total_budget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/budget_title"
+        android:layout_marginTop="30dp"
+        android:text="Php 1,734.10"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <RelativeLayout
+        android:id ="@+id/budget_details"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/total_budget"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/layout_border"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/title_total_spend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total spent"
+            android:textColor="#c8c8cc"
+            />
+
+
+        <TextView
+            android:id="@+id/total_spent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="2dp"
+            android:text="Php 342.88"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_below="@id/title_total_spend"
+            />
+
+        <TextView
+            android:id="@+id/left_spend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Left to spend"
+            android:textColor="#c8c8cc"
+            android:layout_alignStart="@id/left_budget"
+            />
+
+        <TextView
+            android:id="@+id/left_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/left_spend"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="50dp"
+            android:padding="2dp"
+            android:text="Php 222.88"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/edit_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:padding="40dp"
+        android:layout_below="@id/budget_details"/>
+
+    <TextView
+        android:id="@+id/delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:padding="40dp"
+        android:layout_below="@id/budget_details"
+        android:layout_alignEnd="@+id/budget_details"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/edit_btn"
+        >
+        
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:id="@+id/transport_layout"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@drawable/layout_border"
+        android:padding="20dp"
+        android:layout_marginBottom="30dp">
+
+        <ImageView
+            android:id="@+id/transport_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/transportation_icon"
+            android:padding="4dp"
+            android:background="@drawable/back_icon" />
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/dm_sans"
+           android:text="Transport"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/transport_icon"/>
+
+        <TextView
+            android:id="@+id/transport_budgt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:fontFamily="@font/dm_sans"
+            android:textColor="@color/white"
+            android:text="Php 700.00"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="4dp"
+            />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_below="@id/transport_budgt"
+            android:progress="30"
+            android:progressTint="#917DE3"
+            />
+
+
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/food_layout"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@drawable/layout_border"
+            android:padding="20dp"
+            android:layout_weight="1"
+            >
+
+            <ImageView
+                android:id="@+id/food_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/food_icon"
+                android:padding="4dp"
+                android:background="@drawable/back_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/dm_sans"
+                android:text="Food"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/food_icon"/>
+
+            <TextView
+                android:id="@+id/food_budgt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/white"
+                android:text="Php 700.00"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="4dp"
+                />
+
+            <ProgressBar
+                android:id="@+id/food_progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_below="@id/food_budgt"
+                android:progress="30"
+                android:progressTint="#917DE3"
+                />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+
+
+    </RelativeLayout>
