@@ -166,7 +166,9 @@
         android:layout_below="@id/username"
         android:layout_alignStart="@id/username"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:drawableStart="@drawable/error_icon"
+        android:drawablePadding="4dp"
         android:text="Invalid Email"
         android:textColor="@color/Error_color"
         android:textSize="12sp"
@@ -183,20 +185,30 @@
         android:textColor="@color/Error_color"
         android:visibility="invisible"
         android:layout_marginStart="10dp"
+        android:drawablePadding="2dp"
+        android:layout_marginTop="5dp"
         android:textSize="12sp"/>
 
     <TextView
         android:id="@+id/alert_password2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Invalid Email"
+        android:text="Password not match"
         android:layout_below="@id/pass2"
         android:layout_alignStart="@id/username"
         android:textColor="@color/Error_color"
         android:visibility="invisible"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:drawableStart="@drawable/error_icon"
+        android:drawablePadding="2dp"
         android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
 
 </RelativeLayout>

@@ -161,6 +161,12 @@ public class MainActivity extends AppCompatActivity {
             password.addTextChangedListener(textWatcher);
         }
 
+        public boolean isValidContact(int number) {
+        return  number==11;
+
+
+        }
+
 
 
 

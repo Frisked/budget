@@ -8,6 +8,7 @@
     android:background="@color/black">
 
     <LinearLayout
+        android:id="@+id/Title"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
@@ -38,70 +39,6 @@
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_marginTop="150dp"
-        android:layout_width="300dp"
-        android:layout_height="330dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/barrier"
-        android:layout_below="@id/title3"
-        android:padding="20dp">
-
-        <TextView
-            android:id="@+id/title4"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-            android:paddingVertical="15dp"
-            android:text="Budget for January"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/title5"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:paddingVertical="15dp"
-            android:layout_below="@id/title4"
-            android:layout_marginTop="10dp"
-            android:drawableEnd="@drawable/baseline_arrow_forward_ios_24"
-            android:text="February Budget"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/title6"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:paddingVertical="15dp"
-            android:layout_below="@id/title5"
-            android:layout_marginTop="10dp"
-            android:drawableEnd="@drawable/baseline_arrow_forward_ios_24"
-            android:text="March"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/title7"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_below="@id/title6"
-            android:layout_marginTop="10dp"
-            android:paddingVertical="15dp"
-            android:drawableEnd="@drawable/baseline_arrow_forward_ios_24"
-            android:text="April"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
-
-    </RelativeLayout>
-
-
-
 
     <View
         android:layout_width="match_parent"
@@ -119,4 +56,16 @@
         app:itemTextColor="@drawable/icon_tint"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/items" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Title">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/title"/>
+
+    </LinearLayout>
+
 </RelativeLayout>
