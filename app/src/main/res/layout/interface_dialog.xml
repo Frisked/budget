@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/interfaces"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    >
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Plan name"
+        android:padding="10dp"
+        android:maxLength="30"
+        android:background="@drawable/circle"
+       />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Income"
+        android:padding="10dp"
+        android:background="@drawable/circle"
+        android:layout_below="@id/editText1"
+        android:inputType="number"
+        android:maxLength="9"
+        android:layout_marginTop="20dp"/>
+
+
+
+
+</RelativeLayout>
+

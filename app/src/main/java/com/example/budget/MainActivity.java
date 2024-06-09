@@ -160,14 +160,4 @@ public class MainActivity extends AppCompatActivity {
             email.addTextChangedListener(textWatcher);
             password.addTextChangedListener(textWatcher);
         }
-
-        public boolean isValidContact(int number) {
-        return  number==11;
-
-
-        }
-
-
-
-
 }

@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="2dp"
-            android:text="Php 342.88"
+            android:text="Php 1,000,000.00"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold"
@@ -91,7 +91,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="50dp"
             android:padding="2dp"
-            android:text="Php 222.88"
+            android:text="Php 123.88"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold" />

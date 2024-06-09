@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Planner"
-    android:background="@color/black">
+    android:background="@color/black"
+    >
 
     <LinearLayout
         android:id="@+id/Title"
@@ -13,8 +14,6 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         >
-
-
 
         <TextView
             android:id="@+id/title3"
