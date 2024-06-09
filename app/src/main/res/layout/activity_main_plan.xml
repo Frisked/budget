@@ -190,7 +190,7 @@
             android:layout_height="140dp"
             android:background="@drawable/layout_border"
             android:padding="20dp"
-            android:layout_weight="1"
+            android:layout_marginBottom="30dp"
             >
 
             <ImageView
@@ -237,6 +237,174 @@
 
 
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bills_layout"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@drawable/layout_border"
+            android:padding="20dp"
+            android:layout_marginBottom="30dp"
+            >
+
+            <ImageView
+                android:id="@+id/bills_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/bills_icon"
+                android:padding="4dp"
+                android:background="@drawable/back_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/dm_sans"
+                android:text="Bills"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/bills_icon"/>
+
+            <TextView
+                android:id="@+id/bills_budgt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/white"
+                android:text="Php 700.00"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="4dp"
+                />
+
+            <ProgressBar
+                android:id="@+id/bills_progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_below="@id/bills_budgt"
+                android:progress="30"
+                android:progressTint="#917DE3"
+                />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/housing_layout"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@drawable/layout_border"
+            android:padding="20dp"
+            android:layout_marginBottom="30dp"
+            >
+
+            <ImageView
+                android:id="@+id/housing_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/housing"
+                android:padding="4dp"
+                android:background="@drawable/back_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/dm_sans"
+                android:text="Housing"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/housing_icon"/>
+
+            <TextView
+                android:id="@+id/housing_budgt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/white"
+                android:text="Php 700.00"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="4dp"
+                />
+
+            <ProgressBar
+                android:id="@+id/housing_progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_below="@id/housing_budgt"
+                android:progress="30"
+                android:progressTint="#917DE3"
+                />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/miscellaneous_layout"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@drawable/layout_border"
+            android:padding="20dp"
+            android:layout_marginBottom="30dp"
+            >
+
+            <ImageView
+                android:id="@+id/miscellaneous_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/miscellaneous_icon"
+                android:padding="4dp"
+                android:background="@drawable/back_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/dm_sans"
+                android:text="Miscellaneous"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/miscellaneous_icon"/>
+
+            <TextView
+                android:id="@+id/miscellaneous_budgt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/white"
+                android:text="Php 700.00"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="4dp"
+                />
+
+            <ProgressBar
+                android:id="@+id/miscellaneous_progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_below="@id/miscellaneous_budgt"
+                android:progress="30"
+                android:progressTint="#917DE3"
+                />
+
+
+        </RelativeLayout>
+
+
+
+
+
+
 
     </LinearLayout>
 
