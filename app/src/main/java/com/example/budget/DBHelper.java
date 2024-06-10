@@ -26,10 +26,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase MyDB, int oldVersion, int newVersion) {
         MyDB.execSQL("drop Table if exists AccountDetail");
     }
-    public boolean insertAccountData(Integer userid, String email, String password, String username, String address, String contact_number){
+    public boolean insertAccountData(String email, String password, String username, String address, String contact_number){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("UserID", userid);
         contentValues.put("Email", email);
         contentValues.put("Password", password);
         contentValues.put("Username", username);
@@ -86,6 +85,17 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
         else
             return false;
+    }
+
+    public Cursor readAllData(String TABLE_NAME){
+        String query = "SELECT * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
     }
 }
 

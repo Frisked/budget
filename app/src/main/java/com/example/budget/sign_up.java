@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,11 @@ public class sign_up extends AppCompatActivity {
     TextView alert_username,alert_contact,alert_address;
 
     String username_input,address_input,contact_input;
+    String email_input,password_input;
+
+
+
+    Intent prev;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,33 +49,37 @@ public class sign_up extends AppCompatActivity {
         alert_contact  = findViewById(R.id.alert_contact);
         alert_username = findViewById(R.id.alert_username);
 
+        prev = getIntent();
+
+        email_input = prev.getStringExtra("EMAIL");
+        password_input= prev.getStringExtra("PASSWORD");
+
         sign_up.setEnabled(false);
         ButtonDisabler(username,address,contact,sign_up);
-        
-        
+
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 username_input = username.getText().toString();
                 contact_input = contact.getText().toString();
+                address_input = address.getText().toString();
 
 
                 sign_visibility.visibility(isString(username_input),alert_username);
                 sign_visibility.visibility(isNumberValid(contact_input),alert_contact);
 
                 if (isString(username_input) && isNumberValid(contact_input)) {
+
+                    DBHelper db = new DBHelper(sign_up.this);
+
+
+                    db.insertAccountData(email_input,password_input,username_input,address_input,contact_input);
                     Intent main_page = new Intent(sign_up.this,profile.class);
                     main_page.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(main_page);
 
 
                 }
-
-
-
-
-
-
             }
         });
 

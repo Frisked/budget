@@ -77,7 +77,10 @@ public class sign_up2 extends AppCompatActivity {
                     visibility(isValidPass(password_input,alert_pass),alert_pass);
 
                 if (isValidEmail(email_input) && isMatch(password_input,password_input2) && isValidPass(password_input,alert_pass) ) {
+
                         Intent i = new Intent(sign_up2.this,sign_up.class);
+                        i.putExtra("EMAIL",email_input);
+                        i.putExtra("PASSWORD",password_input);
                         startActivity(i);
                     }
 
