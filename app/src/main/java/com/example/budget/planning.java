@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 public class planning extends AppCompatActivity {
     ImageView add;
     String input1;
@@ -34,19 +36,22 @@ public class planning extends AppCompatActivity {
     Intent profile,setting;
     DBHelper DB;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planning);
         BottomNavigationView bottom_nav = findViewById(R.id.navigation);
         bottom_nav.setSelectedItemId(R.id.planner);
-         bg_dialog = ContextCompat.getDrawable(this,R.drawable.circle);
-         add = findViewById(R.id.add_btn);
+        bg_dialog = ContextCompat.getDrawable(this,R.drawable.circle);
+        add = findViewById(R.id.add_btn);
 
         Intent intent = getIntent();
         login = intent.getStringExtra("Login");
-         profile = new Intent(getApplicationContext(), profile.class);
-         setting = new Intent(getApplicationContext(), setting.class);
+
+        profile = new Intent(getApplicationContext(), profile.class);
+        setting = new Intent(getApplicationContext(), setting.class);
+
 
 
          add.setOnClickListener(v -> showDialog());
@@ -71,6 +76,17 @@ public class planning extends AppCompatActivity {
 
             return false;
         });
+
+
+
+
+
+
+
+
+
+
+
     }
 
     private void showDialog() {
@@ -93,7 +109,17 @@ public class planning extends AppCompatActivity {
             input1 = editText1.getText().toString();
             input2 = Integer.parseInt(editText2.getText().toString());
 
-            // Remove redundant code: DB initialization and login retrieval
+
+            Intent Budget = new Intent(planning.this, add_expenses.class);
+            Budget.putExtra("Budget_name",input1);
+            Budget.putExtra("Income",input2);
+            Budget.putExtra("UserID",userid);
+
+
+
+            startActivity(Budget);
+            finish();
+
             DB.insertPlanData(userid, input1, input2);
         });
 
@@ -129,4 +155,6 @@ public class planning extends AppCompatActivity {
         editText1.addTextChangedListener(textWatcher);
         editText2.addTextChangedListener(textWatcher);
     }
+
+
 }

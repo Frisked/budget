@@ -22,9 +22,10 @@
 
     <RelativeLayout
         android:layout_width="300dp"
-        android:layout_height="330dp"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:background="@drawable/barrier"
+        android:layout_centerVertical="true"
         android:layout_below="@id/title_setting"
         android:layout_marginTop="150dp"
         android:padding="20dp">
@@ -55,18 +56,6 @@
             />
 
         <TextView
-            android:id="@+id/title6"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Switch Account"
-            android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/title5"
-            />
-        <TextView
             android:id="@+id/title7"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -76,7 +65,7 @@
             android:textSize="20dp"
             android:textAlignment="center"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/title6"
+            android:layout_below="@id/title5"
             />
 
     </RelativeLayout>
