@@ -50,16 +50,15 @@ public class DBHelper extends SQLiteOpenHelper {
             Toast.makeText(context, email + password + username + address + contact_number, Toast.LENGTH_SHORT).show();
     }
 
-    public void insertPlanData(Integer userid, Integer plan_id, String plan_name, Integer budget_amount){
+    public void insertPlanData(Integer userid, String plan_name, Integer budget_amount){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues1 = new ContentValues();
         contentValues1.put("userID", userid);
-        contentValues1.put("plan_ID", plan_id);
         contentValues1.put("plan_name", plan_name);
         contentValues1.put("budget_Amount", budget_amount);
         long result1 = MyDB.insert("PlanDetail", null, contentValues1);
         if(result1==-1)
-            Toast.makeText(context, userid + plan_id + plan_name + budget_amount, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, userid + plan_name + budget_amount, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -109,6 +108,21 @@ public class DBHelper extends SQLiteOpenHelper {
         return userDetails;
 
     }
+    public Integer[] getUserID(String login) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Integer[] userID = new Integer[1];
+        Cursor cursor = db.rawQuery("SELECT userid FROM AccountDetail WHERE email = ?", new String[]{login});
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                userID[0] = cursor.getInt(cursor.getColumnIndexOrThrow("userid"));
+            }
+            cursor.close();
+        }
+
+        return userID;
+    }
+
 
 }
 

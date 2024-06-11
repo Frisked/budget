@@ -38,7 +38,7 @@ public class profile extends AppCompatActivity {
         setting = new Intent(getApplicationContext(), setting.class);
 
         Intent intent = getIntent();
-        String login = intent.getStringExtra(MainActivity.LOGIN);
+        String login = intent.getStringExtra("Login");
 
         String[] userDetails = DB.getUserDetailsByEmail(login);
         username = userDetails[0];
@@ -64,11 +64,13 @@ public class profile extends AppCompatActivity {
 
                 return  true;
             } else if (item.getItemId() ==R.id.planner) {
+                planner.putExtra("Login", login);
                 startActivity(planner);
                 overridePendingTransition(0, 0);
                 finish();
                 return true;
             } else if (item.getItemId() ==R.id.setting) {
+                setting.putExtra("Login", login);
                 startActivity(setting);
                 overridePendingTransition(0, 0);
                 finish();
