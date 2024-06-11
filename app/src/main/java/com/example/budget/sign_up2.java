@@ -45,11 +45,11 @@ public class sign_up2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up2);
-         linear_layout = findViewById(R.id.lay_lin);
-         linear_layout2 = findViewById(R.id.lay_lin2);
-         email = findViewById(R.id.username);
-         password = findViewById(R.id.pass);
-         password2 = findViewById(R.id.pass2);
+        linear_layout = findViewById(R.id.lay_lin);
+        linear_layout2 = findViewById(R.id.lay_lin2);
+        email = findViewById(R.id.username);
+        password = findViewById(R.id.pass);
+        password2 = findViewById(R.id.pass2);
         ImageButton view = findViewById(R.id.visibile_pass);
         ImageButton view2 = findViewById(R.id.visibile_pass2);
         background = ContextCompat.getDrawable(this, R.drawable.textfield_selected);
@@ -72,15 +72,15 @@ public class sign_up2 extends AppCompatActivity {
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    email_input = email.getText().toString();
-                    password_input = password.getText().toString();
-                    password_input2 = password2.getText().toString();
+                email_input = email.getText().toString();
+                password_input = password.getText().toString();
+                password_input2 = password2.getText().toString();
 
 
 
-                    visibility(isValidEmail(email_input),alert_email);
-                    visibility(isMatch(password_input,password_input2),alert_pass2);
-                    visibility(isValidPass(password_input,alert_pass),alert_pass);
+                visibility(isValidEmail(email_input),alert_email);
+                visibility(isMatch(password_input,password_input2),alert_pass2);
+                visibility(isValidPass(password_input,alert_pass),alert_pass);
 
                 if (isValidEmail(email_input) && isMatch(password_input,password_input2) && isValidPass(password_input,alert_pass) ) {
 
@@ -93,7 +93,7 @@ public class sign_up2 extends AppCompatActivity {
                 }
 
 
-                       
+
 
 
             }
@@ -149,7 +149,7 @@ public class sign_up2 extends AppCompatActivity {
                 log.setEnabled(!email.getText().toString().trim().isEmpty() &&
                         !password.getText().toString().trim().isEmpty() &&
                         !contact.getText().toString().trim().isEmpty()
-                        );
+                );
             }
         };
 
@@ -185,7 +185,7 @@ public class sign_up2 extends AppCompatActivity {
         boolean hasSpecialChar = specialCharMatcher.matches();
 
         if (isLengthValid && hasLetter && hasSpecialChar) {
-                 return true;
+            return true;
         } else {
 
             if (!isLengthValid) {
@@ -205,21 +205,21 @@ public class sign_up2 extends AppCompatActivity {
     }
 
 
-  public void visibility(Boolean validating,TextView alert) {
-      if (!validating) {
-          alert.setVisibility(View.VISIBLE);
-      } else {
-          alert.setVisibility(View.INVISIBLE);
+    public void visibility(Boolean validating,TextView alert) {
+        if (!validating) {
+            alert.setVisibility(View.VISIBLE);
+        } else {
+            alert.setVisibility(View.INVISIBLE);
 
-      }
-  }
+        }
+    }
 
 
 
-  public boolean isMatch(String pass,String pass2) {
+    public boolean isMatch(String pass,String pass2) {
         boolean ismatching = pass.equals(pass2);
         return ismatching;
-  }
+    }
 
 
 

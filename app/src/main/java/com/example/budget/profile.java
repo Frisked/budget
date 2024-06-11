@@ -41,10 +41,10 @@ public class profile extends AppCompatActivity {
         email = userDetails[2];
         contact_number = userDetails[3];
 
-        PUsername = findViewById(R.id.title4);
-        PAddress = findViewById(R.id.title5);
-        PContact_number = findViewById(R.id.title6);
-        PEmail = findViewById(R.id.title7);
+        PUsername = findViewById(R.id.user_display);
+        PAddress = findViewById(R.id.address_display);
+        PContact_number = findViewById(R.id.contact_display);
+        PEmail = findViewById(R.id.email_display);
 
         PUsername.append("\n" + username);
         PAddress.append("\n" + address);

@@ -77,9 +77,9 @@ public class sign_up extends AppCompatActivity {
                     Boolean checkuser =DB.Checkemail(email_input);
                     if(checkuser == false){
                         DB.insertAccountData(email_input, password_input, username_input, address_input, contact_input);
-                            Toast.makeText(com.example.budget.sign_up.this, "Registered Successful", Toast.LENGTH_SHORT).show();
-                            main_page.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(main_page);
+                        Toast.makeText(com.example.budget.sign_up.this, "Registered Successful", Toast.LENGTH_SHORT).show();
+                        main_page.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(main_page);
                     }
                     else{
                         Toast.makeText(com.example.budget.sign_up.this, "Email already exist", Toast.LENGTH_SHORT).show();
@@ -101,13 +101,13 @@ public class sign_up extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                }
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
                 log.setEnabled(!email.getText().toString().trim().isEmpty() &&
-                               !password.getText().toString().trim().isEmpty() &&
-                               !contact.getText().toString().trim().isEmpty());
+                        !password.getText().toString().trim().isEmpty() &&
+                        !contact.getText().toString().trim().isEmpty());
             }
         };
 
@@ -124,7 +124,7 @@ public class sign_up extends AppCompatActivity {
 
 
     }
-    
+
     public boolean isNumberValid(String number) {
         String input = String.valueOf(number);
         String regex = "^09[0-9]{9}$";
@@ -143,7 +143,7 @@ public class sign_up extends AppCompatActivity {
     }
 
 
-    
+
 
 
 

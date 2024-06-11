@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         screen = SplashScreen.installSplashScreen(this);
         setContentView(R.layout.activity_main);
         SplashSceen();
-        
-         view = findViewById(R.id.visibile_pass);
+
+        view = findViewById(R.id.visibile_pass);
         password = findViewById(R.id.pass);
         linear_layout = findViewById(R.id.lay_lin);
         sign = findViewById(R.id.Sign);
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-       ButtonDisabler(email,password,log);
+        ButtonDisabler(email,password,log);
 
 
     }
@@ -151,25 +151,25 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        public void ButtonDisabler(EditText email,EditText password,Button log) {
-    
-            TextWatcher textWatcher = new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-    
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                }
-    
-                @Override
-                public void afterTextChanged(Editable s) {
-                    log.setEnabled(!email.getText().toString().trim().isEmpty() &&
-                            !password.getText().toString().trim().isEmpty());
-                }
-            };
-    
-            email.addTextChangedListener(textWatcher);
-            password.addTextChangedListener(textWatcher);
-        }
+    public void ButtonDisabler(EditText email,EditText password,Button log) {
+
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                log.setEnabled(!email.getText().toString().trim().isEmpty() &&
+                        !password.getText().toString().trim().isEmpty());
+            }
+        };
+
+        email.addTextChangedListener(textWatcher);
+        password.addTextChangedListener(textWatcher);
+    }
 }
