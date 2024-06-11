@@ -28,8 +28,10 @@ public class sign_up extends AppCompatActivity {
     Button sign_up;
     TextView alert_username,alert_contact,alert_address;
 
+
     String username_input,address_input,contact_input, email_input, password_input;
     DBHelper DB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class sign_up extends AppCompatActivity {
         alert_contact  = findViewById(R.id.alert_contact);
         alert_username = findViewById(R.id.alert_username);
 
+
         DB = new DBHelper(this);
 
         Intent intent = getIntent();
@@ -53,10 +56,10 @@ public class sign_up extends AppCompatActivity {
         password_input = intent.getStringExtra("PASSWORD");
 
 
+
         sign_up.setEnabled(false);
         ButtonDisabler(username,address,contact,sign_up);
-        
-        
+
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +72,7 @@ public class sign_up extends AppCompatActivity {
                 sign_visibility.visibility(isNumberValid(contact_input),alert_contact);
 
                 if (isString(username_input) && isNumberValid(contact_input)) {
+
                     Intent main_page = new Intent(sign_up.this,MainActivity.class);
                     Boolean checkuser =DB.Checkemail(email_input);
                     if(checkuser == false){
@@ -80,13 +84,8 @@ public class sign_up extends AppCompatActivity {
                     else{
                         Toast.makeText(com.example.budget.sign_up.this, "Email already exist", Toast.LENGTH_SHORT).show();
                     }
+
                 }
-
-
-
-
-
-
             }
         });
 
