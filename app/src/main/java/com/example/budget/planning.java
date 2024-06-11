@@ -29,6 +29,8 @@ public class planning extends AppCompatActivity {
 
     EditText editText2;
     Drawable bg_dialog;
+    String login;
+
 
     Intent profile,setting;
     @Override
@@ -40,6 +42,9 @@ public class planning extends AppCompatActivity {
          bg_dialog = ContextCompat.getDrawable(this,R.drawable.circle);
          add = findViewById(R.id.add_btn);
 
+        Intent intent = getIntent();
+        login = intent.getStringExtra("Login");
+
          profile = new Intent(getApplicationContext(), profile.class);
          setting = new Intent(getApplicationContext(), setting.class);
 
@@ -49,6 +54,7 @@ public class planning extends AppCompatActivity {
 
         bottom_nav.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.profile) {
+                profile.putExtra("Login",login);
                 startActivity(profile);
                 overridePendingTransition(0, 0);
                 finish();
@@ -56,6 +62,7 @@ public class planning extends AppCompatActivity {
             } else if (item.getItemId() ==R.id.planner) {
                 return true;
             } else if (item.getItemId() ==R.id.setting) {
+                setting.putExtra("Login",login);
                 startActivity(setting);
                 overridePendingTransition(0, 0);
                 finish();

@@ -29,6 +29,7 @@
         android:layout_below="@id/add_exp"
         android:text="Transportation"
         android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
 
         android:padding="5dp"/>
@@ -39,10 +40,9 @@
         android:layout_height="40dp"
         android:layout_below="@id/transpo_text"
         android:background="@drawable/circle"
-        android:drawableStart="@drawable/housing"
         android:inputType="number"
         android:padding="10dp"
-
+        android:layout_centerHorizontal="true"
         android:maxLength="9" />
 
     <TextView
@@ -53,6 +53,7 @@
         android:text="Food"
         android:textColor="@color/white"
         android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
         android:padding="5dp"/>
 
 
@@ -63,6 +64,7 @@
         android:background="@drawable/circle"
         android:layout_below="@id/food_text"
         android:inputType="number"
+        android:layout_centerHorizontal="true"
         android:maxLength="9"
         />
 
@@ -74,6 +76,7 @@
         android:text="Bills"
         android:textColor="@color/white"
         android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
         android:padding="5dp"/>
 
 
@@ -84,6 +87,7 @@
         android:background="@drawable/circle"
         android:layout_below="@id/bills_text"
         android:inputType="number"
+        android:layout_centerHorizontal="true"
         android:maxLength="9"
         />
 
@@ -95,6 +99,7 @@
         android:text="Housing"
         android:textColor="@color/white"
         android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
         android:padding="5dp"/>
 
 
@@ -105,6 +110,7 @@
         android:background="@drawable/circle"
         android:layout_below="@id/housing_text"
         android:inputType="number"
+        android:layout_centerHorizontal="true"
         android:maxLength="9"
         />
 
@@ -113,8 +119,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/housing_field"
-        android:text="Housing"
+        android:text="Miscellaneous"
         android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:padding="5dp"/>
 
@@ -125,8 +132,20 @@
         android:layout_height="40dp"
         android:background="@drawable/circle"
         android:layout_below="@id/misc_text"
+        android:layout_centerHorizontal="true"
         android:inputType="number"
         android:maxLength="9"
         />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_expenses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/misc_field"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/next_button_background"
+        android:text="Confirm"
+        android:textColor="@color/text_sign_up_pressed" />
 
 </RelativeLayout>

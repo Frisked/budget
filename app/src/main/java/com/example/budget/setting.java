@@ -9,6 +9,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class setting extends AppCompatActivity {
     Intent profile, planner;
+    String login;
+
 
 
     @Override
@@ -20,13 +22,18 @@ public class setting extends AppCompatActivity {
         profile = new Intent(getApplicationContext(), profile.class);
         planner = new Intent(getApplicationContext(), planning.class);
 
+        Intent intent = getIntent();
+        login = intent.getStringExtra("Login");
+
         bottom_nav.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.profile) {
+                profile.putExtra("Login",login);
                 startActivity(profile);
                 overridePendingTransition(0, 0);
                 finish();
                 return  true;
             } else if (item.getItemId() ==R.id.planner) {
+                planner.putExtra("Login",login);
                 startActivity(planner);
                 overridePendingTransition(0, 0);
                 finish();

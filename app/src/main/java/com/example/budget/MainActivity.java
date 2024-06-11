@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             if(checkuser == true){
                 String login = email_input;
                 Intent i = new Intent(MainActivity.this, profile.class);
-                i.putExtra(LOGIN, login);
+                i.putExtra("Login",login);
                 startActivity(i);
                 finish();
             }
