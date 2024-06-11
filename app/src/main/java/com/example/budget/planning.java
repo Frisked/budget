@@ -35,7 +35,7 @@ public class planning extends AppCompatActivity {
 
     Intent profile,setting;
     DBHelper DB;
-    ArrayList<String> title;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +76,7 @@ public class planning extends AppCompatActivity {
         });
 
 
-    title = new ArrayList<>();
+
 
 
 
