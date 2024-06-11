@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +28,7 @@ public class sign_up extends AppCompatActivity {
     Button sign_up;
     TextView alert_username,alert_contact,alert_address;
 
-    String username_input,address_input,contact_input;
+    String username_input,address_input,contact_input, email_input, password_input;
     DBHelper DB;
 
     @Override
@@ -48,8 +49,9 @@ public class sign_up extends AppCompatActivity {
         DB = new DBHelper(this);
 
         Intent intent = getIntent();
-        String email_input = intent.getStringExtra(sign_up2.EMAIL);
-        String password_input = intent.getStringExtra(sign_up2.PASSWORD);
+        email_input = intent.getStringExtra("EMAIL");
+        password_input = intent.getStringExtra("PASSWORD");
+
 
         sign_up.setEnabled(false);
         ButtonDisabler(username,address,contact,sign_up);

@@ -36,12 +36,20 @@ public class profile extends AppCompatActivity {
         String login = intent.getStringExtra(MainActivity.LOGIN);
 
         String[] userDetails = DB.getUserDetailsByEmail(login);
-        String username = userDetails[0];
-        String address = userDetails[1];
-        String emailFromDB = userDetails[2];
-        String contactNumber = userDetails[3];
+        username = userDetails[0];
+        address = userDetails[1];
+        email = userDetails[2];
+        contact_number = userDetails[3];
 
+        PUsername = findViewById(R.id.title4);
+        PAddress = findViewById(R.id.title5);
+        PContact_number = findViewById(R.id.title6);
+        PEmail = findViewById(R.id.title7);
 
+        PUsername.append("\n" + username);
+        PAddress.append("\n" + address);
+        PContact_number.append("\n" + contact_number);
+        PEmail.append("\n" + email);
 
 
 

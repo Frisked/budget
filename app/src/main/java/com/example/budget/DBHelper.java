@@ -38,11 +38,11 @@ public class DBHelper extends SQLiteOpenHelper {
     public void insertAccountData(String email, String password, String username, String address, String contact_number){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("Email", email);
-        contentValues.put("Password", password);
-        contentValues.put("Username", username);
-        contentValues.put("Address", address);
-        contentValues.put("Contact_number", contact_number);
+        contentValues.put("email", email);
+        contentValues.put("password", password);
+        contentValues.put("username", username);
+        contentValues.put("address", address);
+        contentValues.put("contact_number", contact_number);
         long result = MyDB.insert("AccountDetail", null, contentValues);
         if(result==-1)
             Toast.makeText(context, email + password + username + address + contact_number, Toast.LENGTH_SHORT).show();
@@ -51,10 +51,10 @@ public class DBHelper extends SQLiteOpenHelper {
     public void insertPlanData(Integer userid, Integer plan_id, String plan_name, Integer budget_amount){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues1 = new ContentValues();
-        contentValues1.put("UserID", userid);
-        contentValues1.put("Plan_ID", plan_id);
-        contentValues1.put("Plan_name", plan_name);
-        contentValues1.put("Budget_Amount", budget_amount);
+        contentValues1.put("userID", userid);
+        contentValues1.put("plan_ID", plan_id);
+        contentValues1.put("plan_name", plan_name);
+        contentValues1.put("budget_Amount", budget_amount);
         long result1 = MyDB.insert("PlanDetail", null, contentValues1);
         if(result1==-1)
             Toast.makeText(context, userid + plan_id + plan_name + budget_amount, Toast.LENGTH_SHORT).show();
@@ -64,9 +64,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public void insertExpensesDetail(Integer plan_id, String expenses_name, Integer expenses_amount){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues2 = new ContentValues();
-        contentValues2.put("Plant_ID", plan_id);
-        contentValues2.put("Expenses_Name", expenses_name);
-        contentValues2.put("Expenses_amount", expenses_amount);
+        contentValues2.put("plant_ID", plan_id);
+        contentValues2.put("expenses_Name", expenses_name);
+        contentValues2.put("expenses_amount", expenses_amount);
         long result2 = MyDB.insert("ExpensesDetail", null, contentValues2);
         if(result2==-1)
             Toast.makeText(context, plan_id + expenses_name + expenses_amount, Toast.LENGTH_SHORT).show();

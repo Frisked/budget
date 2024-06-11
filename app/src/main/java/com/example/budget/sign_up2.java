@@ -30,8 +30,6 @@ import java.util.regex.Pattern;
 
 
 public class sign_up2 extends AppCompatActivity {
-    public static final String EMAIL = "";
-    public static final String PASSWORD = "";
     int click = 1;
     ImageButton next_button;
     sign_up sign;
@@ -86,8 +84,8 @@ public class sign_up2 extends AppCompatActivity {
 
                 if (isValidEmail(email_input) && isMatch(password_input,password_input2) && isValidPass(password_input,alert_pass) ) {
                     Intent i = new Intent(sign_up2.this,sign_up.class);
-                    i.putExtra(EMAIL, email_input);
-                    i.putExtra(PASSWORD, password_input);
+                    i.putExtra("EMAIL", email_input);
+                    i.putExtra("PASSWORD", password_input);
                     startActivity(i);
                 } else {
                     Toast.makeText(sign_up2.this, "Invalid Input", Toast.LENGTH_SHORT).show();
