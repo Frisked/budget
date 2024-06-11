@@ -72,7 +72,6 @@ public class planning extends AppCompatActivity {
         builder.setView(dialogView);
         builder.setTitle("Enter Details");
 
-        // Add action buttons
         builder.setPositiveButton("OK", (dialog, which) -> {
             input1 = editText1.getText().toString();
             input2 = editText2.getText().toString();

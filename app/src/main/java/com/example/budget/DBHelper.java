@@ -92,18 +92,20 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public String[] getUserDetailsByEmail(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] userDetails = new String[4];
+        String[] userDetails = new String[5];
 
-        Cursor cursor = db.rawQuery("SELECT username, address, email, contact_number FROM AccountDetail WHERE email = ?", new String[]{email});
+        Cursor cursor = db.rawQuery("SELECT username, address, email, contact_number, userid FROM AccountDetail WHERE email = ?", new String[]{email});
         if (cursor != null && cursor.moveToFirst()) {
             userDetails[0] = cursor.getString(cursor.getColumnIndexOrThrow("username"));
             userDetails[1] = cursor.getString(cursor.getColumnIndexOrThrow("address"));
             userDetails[2] = cursor.getString(cursor.getColumnIndexOrThrow("email"));
             userDetails[3] = cursor.getString(cursor.getColumnIndexOrThrow("contact_number"));
+            userDetails[4] = cursor.getString(cursor.getColumnIndexOrThrow("userid"));
             cursor.close();
         }
         return userDetails;
     }
+
 }
 
 

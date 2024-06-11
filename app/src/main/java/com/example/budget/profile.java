@@ -19,7 +19,7 @@ public class profile extends AppCompatActivity {
 
     ImageView profile_picture;
     TextView PUsername, PAddress, PContact_number, PEmail;
-    String username, address, contact_number, email;
+    String username, address, contact_number, email, userid;
 
     DBHelper DB;
 
@@ -40,6 +40,7 @@ public class profile extends AppCompatActivity {
         address = userDetails[1];
         email = userDetails[2];
         contact_number = userDetails[3];
+        userid = userDetails[4];
 
         PUsername = findViewById(R.id.title4);
         PAddress = findViewById(R.id.title5);
