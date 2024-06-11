@@ -19,10 +19,9 @@ public class profile extends AppCompatActivity {
 
     ImageView profile_picture;
     TextView PUsername, PAddress, PContact_number, PEmail;
-    String username, address, contact_number, email;
+    String username, address, contact_number, email, userid;
 
     Intent planner,setting;
-    String login;
 
     DBHelper DB;
 
@@ -39,13 +38,14 @@ public class profile extends AppCompatActivity {
         setting = new Intent(getApplicationContext(), setting.class);
 
         Intent intent = getIntent();
-         login = intent.getStringExtra("Login");
+        String login = intent.getStringExtra("Login");
 
         String[] userDetails = DB.getUserDetailsByEmail(login);
         username = userDetails[0];
         address = userDetails[1];
         email = userDetails[2];
         contact_number = userDetails[3];
+        userid = userDetails[4];
 
         PUsername = findViewById(R.id.user_display);
         PAddress = findViewById(R.id.address_display);
@@ -64,13 +64,13 @@ public class profile extends AppCompatActivity {
 
                 return  true;
             } else if (item.getItemId() ==R.id.planner) {
-                planner.putExtra("Login",login);
+                planner.putExtra("Login", login);
                 startActivity(planner);
                 overridePendingTransition(0, 0);
                 finish();
                 return true;
             } else if (item.getItemId() ==R.id.setting) {
-                setting.putExtra("Login",login);
+                setting.putExtra("Login", login);
                 startActivity(setting);
                 overridePendingTransition(0, 0);
                 finish();

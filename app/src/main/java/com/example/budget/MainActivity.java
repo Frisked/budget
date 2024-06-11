@@ -30,7 +30,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String LOGIN = "";
     int click = 1;
     private boolean keep = true;
     private final int DELAY = 1000;
@@ -112,13 +111,14 @@ public class MainActivity extends AppCompatActivity {
             if(checkuser == true){
                 String login = email_input;
                 Intent i = new Intent(MainActivity.this, profile.class);
-                i.putExtra("Login",login);
+                i.putExtra("Login", login);
                 startActivity(i);
                 finish();
             }
             else{
                 email.setHintTextColor(getColor(R.color.Red));
                 password.setHintTextColor(getColor(R.color.Red));
+                Toast.makeText(this, "Invalid Account", Toast.LENGTH_SHORT).show();
             }
 
         } else {
