@@ -57,7 +57,7 @@
         android:padding="20dp">
 
         <TextView
-            android:id="@+id/title4"
+            android:id="@+id/user_display"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="center"
@@ -68,10 +68,10 @@
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/title5"
+            android:id="@+id/contact_display"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/title4"
+            android:layout_below="@id/user_display"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:text="Contact Number:"
@@ -80,10 +80,10 @@
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/title6"
+            android:id="@+id/address_display"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/title5"
+            android:layout_below="@id/contact_display"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:text="Address:"
@@ -92,10 +92,10 @@
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/title7"
+            android:id="@+id/email_display"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/title6"
+            android:layout_below="@id/address_display"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:text="Email:"

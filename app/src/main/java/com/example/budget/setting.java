@@ -8,6 +8,8 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class setting extends AppCompatActivity {
+    Intent profile, planner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,15 +17,17 @@ public class setting extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
         BottomNavigationView bottom_nav = findViewById(R.id.navigation);
         bottom_nav.setSelectedItemId(R.id.setting);
+        profile = new Intent(getApplicationContext(), profile.class);
+        planner = new Intent(getApplicationContext(), planning.class);
 
         bottom_nav.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.profile) {
-                startActivity(new Intent(getApplicationContext(), profile.class));
+                startActivity(profile);
                 overridePendingTransition(0, 0);
                 finish();
                 return  true;
             } else if (item.getItemId() ==R.id.planner) {
-                startActivity(new Intent(getApplicationContext(), planning.class));
+                startActivity(planner);
                 overridePendingTransition(0, 0);
                 finish();
                 return true;

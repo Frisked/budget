@@ -35,6 +35,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(MyDB);
 
     }
+
     public void insertAccountData(String email, String password, String username, String address, String contact_number){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -43,6 +44,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("username", username);
         contentValues.put("address", address);
         contentValues.put("contact_number", contact_number);
+
         long result = MyDB.insert("AccountDetail", null, contentValues);
         if(result==-1)
             Toast.makeText(context, email + password + username + address + contact_number, Toast.LENGTH_SHORT).show();
@@ -90,6 +92,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
     }
 
+
     public String[] getUserDetailsByEmail(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] userDetails = new String[5];
@@ -104,8 +107,8 @@ public class DBHelper extends SQLiteOpenHelper {
             cursor.close();
         }
         return userDetails;
+
     }
 
 }
-
 

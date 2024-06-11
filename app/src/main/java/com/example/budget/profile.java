@@ -21,6 +21,8 @@ public class profile extends AppCompatActivity {
     TextView PUsername, PAddress, PContact_number, PEmail;
     String username, address, contact_number, email, userid;
 
+    Intent planner,setting;
+
     DBHelper DB;
 
     @Override
@@ -32,6 +34,9 @@ public class profile extends AppCompatActivity {
         profile_picture = findViewById(R.id.title2);
         DB = new DBHelper(this);
 
+        planner = new Intent(getApplicationContext(), planning.class);
+        setting = new Intent(getApplicationContext(), setting.class);
+
         Intent intent = getIntent();
         String login = intent.getStringExtra(MainActivity.LOGIN);
 
@@ -42,10 +47,10 @@ public class profile extends AppCompatActivity {
         contact_number = userDetails[3];
         userid = userDetails[4];
 
-        PUsername = findViewById(R.id.title4);
-        PAddress = findViewById(R.id.title5);
-        PContact_number = findViewById(R.id.title6);
-        PEmail = findViewById(R.id.title7);
+        PUsername = findViewById(R.id.user_display);
+        PAddress = findViewById(R.id.address_display);
+        PContact_number = findViewById(R.id.contact_display);
+        PEmail = findViewById(R.id.email_display);
 
         PUsername.append("\n" + username);
         PAddress.append("\n" + address);
@@ -56,14 +61,15 @@ public class profile extends AppCompatActivity {
 
         bottom_nav.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.profile) {
+
                 return  true;
             } else if (item.getItemId() ==R.id.planner) {
-                startActivity(new Intent(getApplicationContext(), planning.class));
+                startActivity(planner);
                 overridePendingTransition(0, 0);
                 finish();
                 return true;
             } else if (item.getItemId() ==R.id.setting) {
-                startActivity(new Intent(getApplicationContext(), setting.class));
+                startActivity(setting);
                 overridePendingTransition(0, 0);
                 finish();
                 return true;
