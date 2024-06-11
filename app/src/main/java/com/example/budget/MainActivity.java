@@ -30,6 +30,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String LOGIN = "";
     int click = 1;
     private boolean keep = true;
     private final int DELAY = 1000;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton view;
     Button sign, log;
     String email_input,password_input;
+    DBHelper DB;
 
 
     @Override
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.pass);
         email_input = email.getText().toString();
+        DB = new DBHelper(this);
 
         log.setEnabled(false);
 
@@ -105,9 +108,18 @@ public class MainActivity extends AppCompatActivity {
         email_input = email.getText().toString();
         password_input = password.getText().toString();
         if (isValidEmail(email_input)) {
-            Intent i = new Intent(MainActivity.this, profile.class);
-            startActivity(i);
-            finish();
+            Boolean checkuser = DB.Checkaccount(email_input, password_input);
+            if(checkuser == true){
+                String login = email_input;
+                Intent i = new Intent(MainActivity.this, profile.class);
+                i.putExtra(LOGIN, login);
+                startActivity(i);
+                finish();
+            }
+            else{
+                email.setHintTextColor(getColor(R.color.Red));
+                password.setHintTextColor(getColor(R.color.Red));
+            }
 
         } else {
             email.setHintTextColor(getColor(R.color.Red));
