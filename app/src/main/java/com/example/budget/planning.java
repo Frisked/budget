@@ -29,6 +29,8 @@ public class planning extends AppCompatActivity {
 
     EditText editText2;
     Drawable bg_dialog;
+
+    Intent profile,setting;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,20 +40,23 @@ public class planning extends AppCompatActivity {
          bg_dialog = ContextCompat.getDrawable(this,R.drawable.circle);
          add = findViewById(R.id.add_btn);
 
+         profile = new Intent(getApplicationContext(), profile.class);
+         setting = new Intent(getApplicationContext(), setting.class);
+
 
         add.setOnClickListener(v -> showDialog());
 
 
         bottom_nav.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.profile) {
-                startActivity(new Intent(getApplicationContext(), profile.class));
+                startActivity(profile);
                 overridePendingTransition(0, 0);
                 finish();
                 return  true;
             } else if (item.getItemId() ==R.id.planner) {
                 return true;
             } else if (item.getItemId() ==R.id.setting) {
-                startActivity(new Intent(getApplicationContext(), setting.class));
+                startActivity(setting);
                 overridePendingTransition(0, 0);
                 finish();
                 return true;

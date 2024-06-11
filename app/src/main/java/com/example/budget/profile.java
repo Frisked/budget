@@ -21,6 +21,8 @@ public class profile extends AppCompatActivity {
     TextView PUsername, PAddress, PContact_number, PEmail;
     String username, address, contact_number, email;
 
+    Intent planner,setting;
+
     DBHelper DB;
 
     @Override
@@ -31,6 +33,9 @@ public class profile extends AppCompatActivity {
         bottom_nav.setSelectedItemId(R.id.profile);
         profile_picture = findViewById(R.id.title2);
         DB = new DBHelper(this);
+
+        planner = new Intent(getApplicationContext(), planning.class);
+        setting = new Intent(getApplicationContext(), setting.class);
 
         Intent intent = getIntent();
         String login = intent.getStringExtra(MainActivity.LOGIN);
@@ -55,14 +60,15 @@ public class profile extends AppCompatActivity {
 
         bottom_nav.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.profile) {
+
                 return  true;
             } else if (item.getItemId() ==R.id.planner) {
-                startActivity(new Intent(getApplicationContext(), planning.class));
+                startActivity(planner);
                 overridePendingTransition(0, 0);
                 finish();
                 return true;
             } else if (item.getItemId() ==R.id.setting) {
-                startActivity(new Intent(getApplicationContext(), setting.class));
+                startActivity(setting);
                 overridePendingTransition(0, 0);
                 finish();
                 return true;
