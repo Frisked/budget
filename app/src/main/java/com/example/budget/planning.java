@@ -48,11 +48,13 @@ public class planning extends AppCompatActivity {
 
         Intent intent = getIntent();
         login = intent.getStringExtra("Login");
+
         profile = new Intent(getApplicationContext(), profile.class);
         setting = new Intent(getApplicationContext(), setting.class);
 
 
-        add.setOnClickListener(v -> showDialog());
+
+         add.setOnClickListener(v -> showDialog());
 
 
         bottom_nav.setOnItemSelectedListener(item -> {
@@ -107,6 +109,7 @@ public class planning extends AppCompatActivity {
             input1 = editText1.getText().toString();
             input2 = Integer.parseInt(editText2.getText().toString());
 
+
             Intent Budget = new Intent(planning.this, add_expenses.class);
             Budget.putExtra("Budget_name",input1);
             Budget.putExtra("Income",input2);
@@ -116,6 +119,7 @@ public class planning extends AppCompatActivity {
 
             startActivity(Budget);
             finish();
+
             DB.insertPlanData(userid, input1, input2);
         });
 
