@@ -18,6 +18,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class profile extends AppCompatActivity {
 
     ImageView profile_picture;
+    TextView PUsername, PAddress, PContact_number, PEmail;
+    String username, address, contact_number, email;
+
+    DBHelper DB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +30,27 @@ public class profile extends AppCompatActivity {
         BottomNavigationView bottom_nav = findViewById(R.id.navigation);
         bottom_nav.setSelectedItemId(R.id.profile);
         profile_picture = findViewById(R.id.title2);
+        DB = new DBHelper(this);
+
+        Intent intent = getIntent();
+        String login = intent.getStringExtra(MainActivity.LOGIN);
+
+        String[] userDetails = DB.getUserDetailsByEmail(login);
+        username = userDetails[0];
+        address = userDetails[1];
+        email = userDetails[2];
+        contact_number = userDetails[3];
+
+        PUsername = findViewById(R.id.title4);
+        PAddress = findViewById(R.id.title5);
+        PContact_number = findViewById(R.id.title6);
+        PEmail = findViewById(R.id.title7);
+
+        PUsername.append("\n" + username);
+        PAddress.append("\n" + address);
+        PContact_number.append("\n" + contact_number);
+        PEmail.append("\n" + email);
+
 
 
         bottom_nav.setOnItemSelectedListener(item -> {

@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,12 +28,10 @@ public class sign_up extends AppCompatActivity {
     Button sign_up;
     TextView alert_username,alert_contact,alert_address;
 
-    String username_input,address_input,contact_input;
-    String email_input,password_input;
 
+    String username_input,address_input,contact_input, email_input, password_input;
+    DBHelper DB;
 
-
-    Intent prev;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class sign_up extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         sign_visibility = new sign_up2();
 
-        username = findViewById(R.id.username);
+        username     = findViewById(R.id.username);
         address = findViewById(R.id.address);
         contact = findViewById(R.id.contact_number);
         sign_up = findViewById(R.id.get_up);
@@ -49,10 +48,14 @@ public class sign_up extends AppCompatActivity {
         alert_contact  = findViewById(R.id.alert_contact);
         alert_username = findViewById(R.id.alert_username);
 
-        prev = getIntent();
 
-        email_input = prev.getStringExtra("EMAIL");
-        password_input= prev.getStringExtra("PASSWORD");
+        DB = new DBHelper(this);
+
+        Intent intent = getIntent();
+        email_input = intent.getStringExtra("EMAIL");
+        password_input = intent.getStringExtra("PASSWORD");
+
+
 
         sign_up.setEnabled(false);
         ButtonDisabler(username,address,contact,sign_up);
@@ -70,14 +73,17 @@ public class sign_up extends AppCompatActivity {
 
                 if (isString(username_input) && isNumberValid(contact_input)) {
 
-                    DBHelper db = new DBHelper(sign_up.this);
-
-
-                    db.insertAccountData(email_input,password_input,username_input,address_input,contact_input);
-                    Intent main_page = new Intent(sign_up.this,profile.class);
-                    main_page.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(main_page);
-
+                    Intent main_page = new Intent(sign_up.this,MainActivity.class);
+                    Boolean checkuser =DB.Checkemail(email_input);
+                    if(checkuser == false){
+                        DB.insertAccountData(email_input, password_input, username_input, address_input, contact_input);
+                            Toast.makeText(com.example.budget.sign_up.this, "Registered Successful", Toast.LENGTH_SHORT).show();
+                            main_page.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(main_page);
+                    }
+                    else{
+                        Toast.makeText(com.example.budget.sign_up.this, "Email already exist", Toast.LENGTH_SHORT).show();
+                    }
 
                 }
             }

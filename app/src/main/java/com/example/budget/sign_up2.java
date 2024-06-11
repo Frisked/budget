@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,6 +38,8 @@ public class sign_up2 extends AppCompatActivity {
     EditText email,password,password2;
     TextView alert_email,alert_pass,alert_pass2;
     LinearLayout linear_layout,linear_layout2;
+
+    DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,7 @@ public class sign_up2 extends AppCompatActivity {
         alert_email  = findViewById(R.id.alert_email);
         alert_pass = findViewById(R.id.alert_password);
         alert_pass2 = findViewById(R.id.alert_password2);
+        DB = new DBHelper(this);
 
 
         Clicking(view,password,linear_layout);
@@ -72,18 +76,24 @@ public class sign_up2 extends AppCompatActivity {
                     password_input = password.getText().toString();
                     password_input2 = password2.getText().toString();
 
+
+
                     visibility(isValidEmail(email_input),alert_email);
                     visibility(isMatch(password_input,password_input2),alert_pass2);
                     visibility(isValidPass(password_input,alert_pass),alert_pass);
 
                 if (isValidEmail(email_input) && isMatch(password_input,password_input2) && isValidPass(password_input,alert_pass) ) {
 
-                        Intent i = new Intent(sign_up2.this,sign_up.class);
-                        i.putExtra("EMAIL",email_input);
-                        i.putExtra("PASSWORD",password_input);
-                        startActivity(i);
-                    }
+                    Intent i = new Intent(sign_up2.this,sign_up.class);
+                    i.putExtra("EMAIL", email_input);
+                    i.putExtra("PASSWORD", password_input);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(sign_up2.this, "Invalid Input", Toast.LENGTH_SHORT).show();
+                }
 
+
+                       
 
 
             }
@@ -98,7 +108,7 @@ public class sign_up2 extends AppCompatActivity {
             public void onClick(View v) {
 
                 int selection = password.getSelectionEnd();
-                if (click == 1) {
+                if (click == 1)  {
                     view.setImageResource(R.drawable.visis);
                     password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     click++;
