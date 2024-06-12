@@ -66,7 +66,9 @@ public class planning extends AppCompatActivity {
 
         adapt = new Adapting(
                 planning.this,
-                DB.getPlan_name(userid),userid);
+                DB.getPlan_name(userid),
+                userid,
+                login);
 
 
         recyclerV.setAdapter(adapt);

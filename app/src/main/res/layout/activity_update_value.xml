@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".add_expenses"
+    android:background="@color/black"
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="50dp">
+
+
+    <TextView
+        android:id="@+id/add_exp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Values"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/white"
+        />
+
+    <TextView
+        android:id="@+id/transpo_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_exp"
+        android:text="Transportation"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+
+        android:padding="5dp"/>
+
+    <EditText
+        android:id="@+id/transpo_field"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/transpo_text"
+        android:background="@drawable/circle"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:maxLength="9" />
+
+    <TextView
+        android:id="@+id/food_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/transpo_field"
+        android:text="Food"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"/>
+
+
+    <EditText
+        android:id="@+id/food_field"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:textAlignment="center"
+
+        android:background="@drawable/circle"
+        android:layout_below="@id/food_text"
+        android:inputType="number"
+        android:layout_centerHorizontal="true"
+        android:maxLength="9"
+        />
+
+    <TextView
+        android:id="@+id/bills_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/food_field"
+        android:text="Bills"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"/>
+
+
+    <EditText
+        android:id="@+id/bills_field"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:textAlignment="center"
+
+        android:background="@drawable/circle"
+        android:layout_below="@id/bills_text"
+        android:inputType="number"
+        android:layout_centerHorizontal="true"
+        android:maxLength="9"
+        />
+
+    <TextView
+        android:id="@+id/housing_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bills_field"
+        android:text="Housing"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"/>
+
+
+    <EditText
+        android:id="@+id/housing_field"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:textAlignment="center"
+
+        android:background="@drawable/circle"
+        android:layout_below="@id/housing_text"
+        android:inputType="number"
+        android:layout_centerHorizontal="true"
+        android:maxLength="9"
+        />
+
+    <TextView
+        android:id="@+id/misc_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/housing_field"
+        android:text="Miscellaneous"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"/>
+
+
+    <EditText
+        android:id="@+id/misc_field"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:background="@drawable/circle"
+        android:layout_below="@id/misc_text"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:inputType="number"
+        android:maxLength="9"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/update_expenses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/misc_field"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/next_button_background"
+        android:text="update"
+        android:textColor="@color/text_sign_up_pressed" />
+
+</RelativeLayout>

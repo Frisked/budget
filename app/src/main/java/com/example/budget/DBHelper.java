@@ -179,10 +179,10 @@ public class DBHelper extends SQLiteOpenHelper {
         return userPlans;
     }
 
-    public ArrayList<String> getIncome(Integer userid) {
+    public ArrayList<String> getIncome(Integer userid,String plan_name) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
         ArrayList<String> income = new ArrayList<>();
-        Cursor cursor = MyDB.rawQuery("SELECT budget_amount FROM PlanDetail WHERE userid = ?", new String[]{String.valueOf(userid)});
+        Cursor cursor = MyDB.rawQuery("SELECT budget_amount FROM PlanDetail WHERE userid = ? AND plan_name=?", new String[]{String.valueOf(userid),plan_name});
 
         if (cursor != null) {
             if (cursor.moveToFirst()) {
@@ -226,6 +226,22 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         return exists;
     }
+
+    public void updateExpense(int planId, String expenseName, int newAmount) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("expenses_amount", newAmount);
+
+        int result = db.update("ExpensesDetail", contentValues, "plan_id = ? AND expenses_name = ?", new String[]{String.valueOf(planId), expenseName});
+
+        if (result > 0) {
+            Log.d("DBHelper", "Expense updated successfully!");
+        } else {
+            Log.d("DBHelper", "Failed to update expense.");
+        }
+    }
+
+
 
 
 

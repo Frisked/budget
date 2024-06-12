@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -16,8 +18,11 @@ public class main_plan extends AppCompatActivity {
 
     String title_name,TransV,FoodV,BillsV,MiscV,HouseV,Income;
     TextView trans_bgt,food_bgt,bills_bgt,misc_bgt,house_bgt,income;
+    DBHelper DB;
+    String login;
 
     float  transport_value,food_value,bills_value,misc_value,house_value,income_value;
+    TextView edit,delete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,8 @@ public class main_plan extends AppCompatActivity {
         setContentView(R.layout.activity_main_plan);
 
         title = findViewById(R.id.budget_title);
+        edit = findViewById(R.id.edit_btn);
+
 
         any = getIntent();
         title_name= any.getStringExtra("Title");
@@ -34,6 +41,8 @@ public class main_plan extends AppCompatActivity {
         HouseV= any.getStringExtra("HouseV");
         MiscV= any.getStringExtra("MiscV");
         Income= any.getStringExtra("Income");
+        login= any.getStringExtra("Login");
+
 
         trans_bgt = findViewById(R.id.transport_budgt);
         food_bgt = findViewById(R.id.food_budgt);
@@ -50,6 +59,20 @@ public class main_plan extends AppCompatActivity {
         income.append(Income);
 
 
+        DB = new DBHelper(this);
+        Integer PlanID=DB.getPlanID(title_name);
         title.setText(title_name);
+        Log.d("jet","Hello1");
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(main_plan.this, update_value.class);
+                intent.putExtra("PlanID",String.valueOf(PlanID));
+                intent.putExtra("Login",login);
+                intent.putExtra("Income",Income);
+                startActivity(intent);
+                Log.d("jet","Hello2");
+            }
+        });
     }
 }

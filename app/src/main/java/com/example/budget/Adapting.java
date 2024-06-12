@@ -20,12 +20,14 @@ public class Adapting extends RecyclerView.Adapter<Adapting.MyViewHolder> {
     DBHelper DB;
     ArrayList<String> title,TranV,FoodV,BillsV,MiscV,HouseV,Income;
     int userid;
+    String login;
 
-    Adapting(Context context,ArrayList title,int userid) {
+    Adapting(Context context,ArrayList title,int userid,String login) {
         DB = new DBHelper(context);
         this.context = context;
         this.title = title;
         this.userid=userid;
+        this.login = login;
     }
     @NonNull
     @Override
@@ -44,7 +46,6 @@ public class Adapting extends RecyclerView.Adapter<Adapting.MyViewHolder> {
 
 
 
-         Log.d("jet",title.get(position));
 
         holder.lay_out.setOnClickListener(new View.OnClickListener() {
 
@@ -52,15 +53,13 @@ public class Adapting extends RecyclerView.Adapter<Adapting.MyViewHolder> {
             @Override
             public void onClick(View view) {
                 int planId = DB.getPlanID(title.get(position));
-                Log.d("jet",String.valueOf(DB.getPlanID(title.get(position))));
                 TranV = DB.getValue(planId,"Transportation");
                 FoodV = DB.getValue(planId,"Food");
                 BillsV = DB.getValue(planId,"Bills");
                 HouseV = DB.getValue(planId,"Housing");
                 MiscV = DB.getValue(planId,"Miscellaneous");
-                Income = DB.getIncome(userid);
+                Income = DB.getIncome(userid,String.valueOf(title.get(position)));
 
-                Log.d("jet",String.valueOf(position));
                 Intent i = new Intent(context,main_plan.class);
                 i.putExtra("Title",String.valueOf(title.get(position)));
                 i.putExtra("TranV",String.valueOf(TranV.get(0)));
@@ -69,7 +68,7 @@ public class Adapting extends RecyclerView.Adapter<Adapting.MyViewHolder> {
                 i.putExtra("HouseV",String.valueOf(HouseV.get(0)));
                 i.putExtra("MiscV",String.valueOf(MiscV.get(0)));
                 i.putExtra("Income",String.valueOf(Income.get(0)));
-
+                i.putExtra("Login",login);
 
 
                 context.startActivity(i);
