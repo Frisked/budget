@@ -31,7 +31,7 @@
         android:layout_marginTop="70dp"
         android:background="@drawable/text_selection_background"
         android:ems="10"
-        android:hint="San Roque Quezon City, Metro Manila"
+        android:hint="Quezon City"
         android:inputType="text"
         android:paddingStart="10dp"
         android:maxLength="40"
