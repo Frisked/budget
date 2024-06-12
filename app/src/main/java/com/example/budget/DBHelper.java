@@ -161,24 +161,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return plan_id;
     }
 
-    public Integer[] getUserPlan(Integer userid) {
-        SQLiteDatabase MyDB = this.getReadableDatabase();
-        Integer[] userPlan = new Integer[2];
-        Cursor cursor = MyDB.rawQuery("SELECT plan_name, budget_amount FROM PlanDetail WHERE userid = ?", new String[]{String.valueOf(userid)});
-
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
-                String planName = cursor.getString(cursor.getColumnIndexOrThrow("plan_name"));
-                userPlan[0] = planName.hashCode();
-                userPlan[1] = cursor.getInt(cursor.getColumnIndexOrThrow("budget_amount"));
-            }
-            cursor.close();
-        }
-        return userPlan;
-    }
-
-
-
     public ArrayList<String> getPlan_name(Integer userid) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
         ArrayList<String> userPlans = new ArrayList<>();
