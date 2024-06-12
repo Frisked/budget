@@ -31,7 +31,9 @@ public class planning extends AppCompatActivity {
     ImageView add;
     String input1;
     String login;
-    Integer input2, userid,planid;
+    Integer userid, planid;
+    Float input2;
+
     EditText editText1;
 
     EditText editText2;
@@ -106,6 +108,7 @@ public class planning extends AppCompatActivity {
         editText1 = dialogView.findViewById(R.id.editText1);
         editText2 = dialogView.findViewById(R.id.editText2);
 
+        DB = new DBHelper(this);
         Integer[] getUserID = DB.getUserID(login);
         userid = getUserID[0];
 
@@ -117,7 +120,7 @@ public class planning extends AppCompatActivity {
 
         builder.setPositiveButton("OK", (dialog, which) -> {
             input1 = editText1.getText().toString();
-            input2 = Integer.parseInt(editText2.getText().toString());
+            input2 = Float.parseFloat(editText2.getText().toString());
 
             if(DB.doesExpenseNameExist(input1)) {
                 Toast.makeText(planning.this, "Name Already Exists!", Toast.LENGTH_SHORT).show();

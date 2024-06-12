@@ -13,6 +13,8 @@ public class setting extends AppCompatActivity {
     Intent profile, planner;
     String login;
     TextView logout;
+    DBHelper DB;
+    Integer userid;
 
 
     @Override
@@ -26,6 +28,10 @@ public class setting extends AppCompatActivity {
 
         Intent intent = getIntent();
         login = intent.getStringExtra("Login");
+
+        DB = new DBHelper(this);
+        Integer[] getUserID = DB.getUserID(login);
+        userid = getUserID[0];
 
 
 

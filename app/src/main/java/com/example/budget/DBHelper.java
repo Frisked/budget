@@ -24,10 +24,10 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase MyDB) {
+        public void onCreate(SQLiteDatabase MyDB) {
         MyDB.execSQL("create Table AccountDetail (userid integer primary key autoincrement not null, email Text not null, password Text not null, username Text not null, address Text not null, contact_number Text not null)");
-        MyDB.execSQL("create Table PlanDetail (userid integer, plan_id integer primary key autoincrement not null, plan_name Text not null, budget_amount integer not null, foreign key(userid) references AccountDetail(userid) on delete cascade)");
-        MyDB.execSQL("create Table ExpensesDetail(plan_id integer, expenses_name Text not null, expenses_amount integer not null,foreign key(plan_id) references PlanDetail(plan_id) on delete cascade)");
+        MyDB.execSQL("create Table PlanDetail (userid integer, plan_id integer primary key autoincrement not null, plan_name Text not null, budget_amount decimal(11,2) not null, foreign key(userid) references AccountDetail(userid) on delete cascade)");
+        MyDB.execSQL("create Table ExpensesDetail(plan_id integer, expenses_name Text not null, expenses_amount decimal(11,2) not null,foreign key(plan_id) references PlanDetail(plan_id) on delete cascade)");
     }
 
 
@@ -54,7 +54,7 @@ public class DBHelper extends SQLiteOpenHelper {
             Toast.makeText(context, email + password + username + address + contact_number, Toast.LENGTH_SHORT).show();
     }
 
-    public void insertPlanData(Integer userid, String plan_name, Integer budget_amount){
+    public void insertPlanData(Integer userid, String plan_name, Float budget_amount){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues1 = new ContentValues();
         contentValues1.put("userID", userid);
@@ -128,22 +128,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return userID;
     }
 
-    public Integer[] getUserPlan(Integer userid) {
-        SQLiteDatabase MyDB = this.getReadableDatabase();
-        Integer[] userPlan = new Integer[2];
-        Cursor cursor = MyDB.rawQuery("SELECT plan_name, budget_amount FROM PlanDetail WHERE userid = ?", new String[]{String.valueOf(userid)});
-
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
-                String planName = cursor.getString(cursor.getColumnIndexOrThrow("plan_name"));
-                userPlan[0] = planName.hashCode();
-                userPlan[1] = cursor.getInt(cursor.getColumnIndexOrThrow("budget_amount"));
-            }
-            cursor.close();
-        }
-
-        return userPlan;
-    }
 
 
     public Integer getPlanID(String plan) {
@@ -253,12 +237,5 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.d("DBHelper", "Failed to delete expense.");
         }
     }
-
-
-
-
-
-
-
 
 }

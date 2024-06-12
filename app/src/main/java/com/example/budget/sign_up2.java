@@ -88,8 +88,6 @@ public class sign_up2 extends AppCompatActivity {
                     i.putExtra("EMAIL", email_input);
                     i.putExtra("PASSWORD", password_input);
                     startActivity(i);
-                } else {
-                    Toast.makeText(sign_up2.this, "Invalid Input", Toast.LENGTH_SHORT).show();
                 }
 
 
