@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class profile extends AppCompatActivity {
 
-    ImageView profile_picture;
+    TextView profile_picture;
     TextView PUsername, PAddress, PContact_number, PEmail;
     String username, address, contact_number, email, userid;
 
@@ -37,11 +37,14 @@ public class profile extends AppCompatActivity {
         profile_picture = findViewById(R.id.title2);
         DB = new DBHelper(this);
 
+
         planner = new Intent(getApplicationContext(), planning.class);
         setting = new Intent(getApplicationContext(), setting.class);
 
+        Log.d("jet","ano1");
         Intent intent = getIntent();
         String login = intent.getStringExtra("Login");
+        Log.d("jet","ano2");
 
         String[] userDetails = DB.getUserDetailsByEmail(login);
         username = userDetails[0];
@@ -49,11 +52,16 @@ public class profile extends AppCompatActivity {
         email = userDetails[2];
         contact_number = userDetails[3];
         userid = userDetails[4];
+        Log.d("jet","ano3");
 
+        char frst = username.charAt(0);
+        String s = ""+frst;
+        profile_picture.setText(s.toUpperCase());
         PUsername = findViewById(R.id.user_display);
         PAddress = findViewById(R.id.address_display);
         PContact_number = findViewById(R.id.contact_display);
         PEmail = findViewById(R.id.email_display);
+        Log.d("jet","ano5");
 
         PUsername.append("\n" + username);
         PAddress.append("\n" + address);
@@ -83,33 +91,11 @@ public class profile extends AppCompatActivity {
             return false;
         });
 
-        TextView df = findViewById(R.id.title3);
 
-        df.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ImagePick();
-            }
-        });
 
 
     }
 
-    public void ImagePick() {
-        ImagePicker.with(profile.this)
-                .galleryOnly()
-                .cropSquare()
-                .compress(1024)
-                .maxResultSize(1080, 1080)
-                .start();
 
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        Uri uri = data.getData();
-        profile_picture.setImageURI(uri);
-    }
 }
