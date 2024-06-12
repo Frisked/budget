@@ -59,7 +59,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues contentValues1 = new ContentValues();
         contentValues1.put("userID", userid);
         contentValues1.put("plan_name", plan_name);
-        contentValues1.put("budget_Amount", budget_amount);
+        contentValues1.put("budget_amount", budget_amount);
         long result1 = MyDB.insert("PlanDetail", null, contentValues1);
         if(result1==-1)
             Toast.makeText(context, userid + plan_name + budget_amount, Toast.LENGTH_SHORT).show();
@@ -97,10 +97,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     public String[] getUserDetailsByEmail(String email) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase MyDB = this.getReadableDatabase();
         String[] userDetails = new String[5];
 
-        Cursor cursor = db.rawQuery("SELECT username, address, email, contact_number, userid FROM AccountDetail WHERE email = ?", new String[]{email});
+        Cursor cursor = MyDB.rawQuery("SELECT username, address, email, contact_number, userid FROM AccountDetail WHERE email = ?", new String[]{email});
         if (cursor != null && cursor.moveToFirst()) {
             userDetails[0] = cursor.getString(cursor.getColumnIndexOrThrow("username"));
             userDetails[1] = cursor.getString(cursor.getColumnIndexOrThrow("address"));
@@ -113,9 +113,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
     public Integer[] getUserID(String login) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase MyDB = this.getReadableDatabase();
         Integer[] userID = new Integer[1];
-        Cursor cursor = db.rawQuery("SELECT userid FROM AccountDetail WHERE email = ?", new String[]{login});
+        Cursor cursor = MyDB.rawQuery("SELECT userid FROM AccountDetail WHERE email = ?", new String[]{login});
 
         if (cursor != null) {
             if (cursor.moveToFirst()) {
@@ -124,7 +124,25 @@ public class DBHelper extends SQLiteOpenHelper {
             cursor.close();
         }
 
+
         return userID;
+    }
+
+    public Integer[] getUserPlan(Integer userid) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Integer[] userPlan = new Integer[2];
+        Cursor cursor = MyDB.rawQuery("SELECT plan_name, budget_amount FROM PlanDetail WHERE userid = ?", new String[]{String.valueOf(userid)});
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                String planName = cursor.getString(cursor.getColumnIndexOrThrow("plan_name"));
+                userPlan[0] = planName.hashCode();
+                userPlan[1] = cursor.getInt(cursor.getColumnIndexOrThrow("budget_amount"));
+            }
+            cursor.close();
+        }
+
+        return userPlan;
     }
 
 
