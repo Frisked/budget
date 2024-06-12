@@ -241,6 +241,19 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void deleteExpense(int planId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        int result = db.delete("PlanDetail", "plan_id = ? ", new String[]{String.valueOf(planId)});
+        db.delete("ExpensesDetail", "plan_id = ? ", new String[]{String.valueOf(planId)});
+
+        if (result > 0) {
+            Log.d("DBHelper", "Expense deleted successfully!");
+        } else {
+            Log.d("DBHelper", "Failed to delete expense.");
+        }
+    }
+
 
 
 

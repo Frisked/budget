@@ -1,13 +1,18 @@
 package com.example.budget;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -20,17 +25,20 @@ public class main_plan extends AppCompatActivity {
     TextView trans_bgt,food_bgt,bills_bgt,misc_bgt,house_bgt,income;
     DBHelper DB;
     String login;
-
+    Integer PlanID;
     float  transport_value,food_value,bills_value,misc_value,house_value,income_value;
     TextView edit,delete;
+    Drawable icon_warn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_plan);
+        icon_warn = ContextCompat.getDrawable(this, R.drawable.warning_red);
 
         title = findViewById(R.id.budget_title);
         edit = findViewById(R.id.edit_btn);
+        delete = findViewById(R.id.delete_btn);
 
 
         any = getIntent();
@@ -60,9 +68,9 @@ public class main_plan extends AppCompatActivity {
 
 
         DB = new DBHelper(this);
-        Integer PlanID=DB.getPlanID(title_name);
+         PlanID=DB.getPlanID(title_name);
         title.setText(title_name);
-        Log.d("jet","Hello1");
+      //  DB.deleteExpense(PlanID);
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,7 +79,31 @@ public class main_plan extends AppCompatActivity {
                 intent.putExtra("Login",login);
                 intent.putExtra("Income",Income);
                 startActivity(intent);
-                Log.d("jet","Hello2");
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(main_plan.this)
+                        .setTitle("Delete Plan")
+                        .setMessage("Are you sure you want to delete this plan?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent in = new Intent(main_plan.this,planning.class);
+                                in.putExtra("Login",login);
+                                DB.deleteExpense(PlanID);
+                                Toast.makeText(main_plan.this, "Plan deleted successfully", Toast.LENGTH_SHORT).show();
+                                startActivity(in);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .setIcon(icon_warn)
+                        .show();
+
+
             }
         });
     }
