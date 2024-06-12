@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class planning extends AppCompatActivity {
@@ -120,7 +121,7 @@ public class planning extends AppCompatActivity {
 
         builder.setPositiveButton("OK", (dialog, which) -> {
             input1 = editText1.getText().toString();
-            input2 = Float.parseFloat(editText2.getText().toString());
+            input2 = Format(editText2.getText().toString());
 
             if(DB.doesExpenseNameExist(input1)) {
                 Toast.makeText(planning.this, "Name Already Exists!", Toast.LENGTH_SHORT).show();
@@ -128,11 +129,12 @@ public class planning extends AppCompatActivity {
 
                 Intent Budget = new Intent(planning.this, add_expenses.class);
                 Budget.putExtra("budget_title", input1);
-                Budget.putExtra("income", editText2.getText().toString());
+                Budget.putExtra("income", input2.toString());
                 Budget.putExtra("Login", login);
+                Budget.putExtra("ID",userid.toString());
                 startActivity(Budget);
                 finish();
-                DB.insertPlanData(userid, input1, input2);
+                //DB.insertPlanData(userid, input1, input2);
             }
         });
 
@@ -167,6 +169,11 @@ public class planning extends AppCompatActivity {
 
         editText1.addTextChangedListener(textWatcher);
         editText2.addTextChangedListener(textWatcher);
+    }
+    public static float Format(String numberString) {
+        double number = Double.parseDouble(numberString);
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format(number));
     }
 
 

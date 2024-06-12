@@ -21,39 +21,29 @@
         android:textSize="40dp" />
 
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <TextView
         android:id="@+id/title2"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:shapeAppearance="@style/profile_circle"
-        app:srcCompat="@drawable/baseline_add_24"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/title1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:layout_below="@id/title1"
-        android:background="@color/white"
-
-        />
-
-    <TextView
-        android:id="@+id/title3"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_below="@id/title2"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="Edit"
-        android:textAlignment="center"
+        android:background="@drawable/oval"
+        android:text="J"
         android:textColor="@color/white"
-        android:textSize="20dp" />
+        android:textSize="100dp"
+        android:textAlignment="center"
+        app:shapeAppearance="@style/profile_circle"
+        />
 
 
     <RelativeLayout
         android:layout_width="300dp"
         android:layout_height="330dp"
-        android:layout_below="@id/title3"
+        android:layout_below="@id/title2"
         android:layout_centerHorizontal="true"
         android:background="@drawable/barrier"
+        android:layout_marginTop="50dp"
         android:padding="20dp">
 
         <TextView

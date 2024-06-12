@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.text.DecimalFormat;
 
 public class update_value extends AppCompatActivity {
     EditText transportation_update,food_update,bills_update,housing_update,misc_update;
@@ -16,7 +20,7 @@ public class update_value extends AppCompatActivity {
 
     Button update;
     String PlanID;
-    int TransV,FoodV,BillsV,MiscV,HouseV,total;
+    float TransV,FoodV,BillsV,MiscV,HouseV,total;
     int IDplan  ;
     DBHelper DB;
     final String expense_name1 = "Transportation";
@@ -27,7 +31,7 @@ public class update_value extends AppCompatActivity {
     final String expense_name5 = "Miscellaneous";
     String login;
     String in;
-    int come;
+    float come;
 
 
 
@@ -46,17 +50,44 @@ public class update_value extends AppCompatActivity {
         update=  findViewById(R.id.update_expenses);
         DB = new DBHelper(this);
 
-        Log.d("jet","Hello4");
 
         Intent i  = getIntent();
         PlanID = i.getStringExtra("PlanID");
         login = i.getStringExtra("Login");
         IDplan = Integer.parseInt(PlanID);
         in  = i.getStringExtra("Income");
-        come = Integer.parseInt(in);
+        come = Format(in);
+        update.setEnabled(false);
 
-        Log.d("jet","Hello5");
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String text1 = transportation_update.getText().toString();
+                String text2 = food_update.getText().toString();
+                String text3 = bills_update.getText().toString();
+                String text4 = housing_update.getText().toString();
+                String text5 = misc_update.getText().toString();
+                boolean isInputValid = !text1.startsWith("0") && !text1.isEmpty()
+                        && !text2.startsWith("0") && !text2.isEmpty()
+                        && !text3.startsWith("0") && !text3.isEmpty()
+                        && !text4.startsWith("0") && !text4.isEmpty()
+                        && !text5.startsWith("0") && !text5.isEmpty()  ;
+
+                update.setEnabled(isInputValid);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        };
+
+        transportation_update.addTextChangedListener(textWatcher);
+        food_update.addTextChangedListener(textWatcher);
+        bills_update.addTextChangedListener(textWatcher);
+        housing_update.addTextChangedListener(textWatcher);
+        misc_update.addTextChangedListener(textWatcher);
 
         update.setOnClickListener(new View.OnClickListener() {
 
@@ -70,11 +101,11 @@ public class update_value extends AppCompatActivity {
                 new_housing = housing_update.getText().toString();
                 new_misc = misc_update.getText().toString();
 
-                TransV = Integer.parseInt(new_transpo);
-                FoodV = Integer.parseInt(new_food);
-                BillsV = Integer.parseInt(new_bills);
-                MiscV = Integer.parseInt(new_housing);
-                HouseV = Integer.parseInt(new_misc);
+                TransV = Format(new_transpo);
+                FoodV = Format(new_food);
+                BillsV = Format(new_bills);
+                MiscV = Format(new_misc);
+                HouseV = Format(new_housing);
 
                 total = TransV+FoodV+BillsV+MiscV+HouseV;
 
@@ -99,5 +130,11 @@ public class update_value extends AppCompatActivity {
 
 
 
+    }
+
+    public static float Format(String numberString) {
+        double number = Double.parseDouble(numberString);
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format(number));
     }
 }

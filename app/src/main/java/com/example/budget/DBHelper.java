@@ -66,7 +66,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public void insertExpensesDetail(Integer plan_id, String expenses_name, Integer expenses_amount){
+    public void insertExpensesDetail(Integer plan_id, String expenses_name, float expenses_amount){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues2 = new ContentValues();
         contentValues2.put("plan_ID", plan_id);
@@ -211,7 +211,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return exists;
     }
 
-    public void updateExpense(int planId, String expenseName, int newAmount) {
+    public void updateExpense(int planId, String expenseName, float newAmount) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("expenses_amount", newAmount);
@@ -222,6 +222,18 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.d("DBHelper", "Expense updated successfully!");
         } else {
             Log.d("DBHelper", "Failed to update expense.");
+        }
+    }
+
+    public void changeUsername(int userid, String newUsername) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("username", newUsername);
+        int result = db.update("AccountDetail", values, "userid = ?", new String[]{String.valueOf(userid)});
+        if (result > 0) {
+            Log.d("DBHelper", "Username changed successfully!");
+        } else {
+            Log.d("DBHelper", "Failed to change username.");
         }
     }
 
@@ -237,5 +249,20 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.d("DBHelper", "Failed to delete expense.");
         }
     }
+
+    public void changePassword(int userid, String newPassword) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("password", newPassword);
+        int result = db.update("AccountDetail", values, "userid = ?", new String[]{String.valueOf(userid)});
+        if (result > 0) {
+            Log.d("DBHelper", "Password changed successfully!");
+        } else {
+            Log.d("DBHelper", "Failed to change password.");
+        }
+    }
+
+
+
 
 }

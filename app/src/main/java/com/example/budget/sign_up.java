@@ -39,7 +39,7 @@ public class sign_up extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         sign_visibility = new sign_up2();
 
-        username     = findViewById(R.id.username);
+        username = findViewById(R.id.username);
         address = findViewById(R.id.address);
         contact = findViewById(R.id.contact_number);
         sign_up = findViewById(R.id.get_up);

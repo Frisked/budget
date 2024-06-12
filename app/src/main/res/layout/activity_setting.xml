@@ -31,7 +31,7 @@
         android:padding="20dp">
 
         <TextView
-            android:id="@+id/title4"
+            android:id="@+id/username_change"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="Change User Name"
@@ -43,7 +43,7 @@
             />
 
         <TextView
-            android:id="@+id/title5"
+            android:id="@+id/password_change"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="Change Password"
@@ -52,7 +52,7 @@
             android:textSize="20dp"
             android:textAlignment="center"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/title4"
+            android:layout_below="@id/username_change"
             />
 
         <TextView
@@ -65,7 +65,7 @@
             android:textSize="20dp"
             android:textAlignment="center"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/title5"
+            android:layout_below="@id/password_change"
             />
 
     </RelativeLayout>
