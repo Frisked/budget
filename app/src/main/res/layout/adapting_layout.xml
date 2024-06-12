@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/adapt_linear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/black"
@@ -7,23 +8,22 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/barrier"
+        android:padding="10dp"
         >
 
         <TextView
             android:id="@+id/title_budget"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Budget for January"
             android:textColor="@color/white"
+            android:textAlignment="center"
             android:textSize="20sp"
             android:layout_centerHorizontal="true"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/title_budget"
-            android:background="#353550" />
+
 
     </RelativeLayout>
 

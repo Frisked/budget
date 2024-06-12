@@ -3,9 +3,13 @@ package com.example.budget;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -27,7 +31,7 @@ public class planning extends AppCompatActivity {
     ImageView add;
     String input1;
     String login;
-    Integer input2, userid;
+    Integer input2, userid,planid;
     EditText editText1;
 
     EditText editText2;
@@ -35,6 +39,8 @@ public class planning extends AppCompatActivity {
 
     Intent profile,setting;
     DBHelper DB;
+    Adapting adapt;
+    RecyclerView recyclerV;
 
 
     @Override
@@ -45,12 +51,26 @@ public class planning extends AppCompatActivity {
         bottom_nav.setSelectedItemId(R.id.planner);
         bg_dialog = ContextCompat.getDrawable(this,R.drawable.circle);
         add = findViewById(R.id.add_btn);
+        recyclerV = findViewById(R.id.recycleV);
 
         Intent intent = getIntent();
         login = intent.getStringExtra("Login");
         profile = new Intent(getApplicationContext(), profile.class);
         setting = new Intent(getApplicationContext(), setting.class);
+        DB = new DBHelper(this);
 
+        Integer[] getUserID = DB.getUserID(login);
+        userid = getUserID[0];
+
+
+
+        adapt = new Adapting(
+                planning.this,
+                DB.getPlan_name(userid),userid);
+
+
+        recyclerV.setAdapter(adapt);
+        recyclerV.setLayoutManager(new LinearLayoutManager(planning.this));
 
         add.setOnClickListener(v -> showDialog());
 
@@ -75,16 +95,6 @@ public class planning extends AppCompatActivity {
             return false;
         });
 
-
-
-
-
-
-
-
-
-
-
     }
 
     private void showDialog() {
@@ -94,29 +104,31 @@ public class planning extends AppCompatActivity {
         editText1 = dialogView.findViewById(R.id.editText1);
         editText2 = dialogView.findViewById(R.id.editText2);
 
-        // Initialize DB object
-        DB = new DBHelper(this);
         Integer[] getUserID = DB.getUserID(login);
         userid = getUserID[0];
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(dialogView);
         builder.setTitle("Enter Details");
+        builder.setCancelable(false);
+
 
         builder.setPositiveButton("OK", (dialog, which) -> {
             input1 = editText1.getText().toString();
             input2 = Integer.parseInt(editText2.getText().toString());
 
-            Intent Budget = new Intent(planning.this, add_expenses.class);
-            Budget.putExtra("Budget_name",input1);
-            Budget.putExtra("Income",input2);
-            Budget.putExtra("UserID",userid);
+            if(DB.doesExpenseNameExist(input1)) {
+                Toast.makeText(planning.this, "Name Already Exists!", Toast.LENGTH_SHORT).show();
+            } else {
 
-
-
-            startActivity(Budget);
-            finish();
-            DB.insertPlanData(userid, input1, input2);
+                Intent Budget = new Intent(planning.this, add_expenses.class);
+                Budget.putExtra("budget_title", input1);
+                Budget.putExtra("income", editText2.getText().toString());
+                Budget.putExtra("Login", login);
+                startActivity(Budget);
+                finish();
+                DB.insertPlanData(userid, input1, input2);
+            }
         });
 
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
@@ -151,6 +163,8 @@ public class planning extends AppCompatActivity {
         editText1.addTextChangedListener(textWatcher);
         editText2.addTextChangedListener(textWatcher);
     }
+
+
 
 
 }

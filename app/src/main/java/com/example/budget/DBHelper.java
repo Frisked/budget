@@ -5,9 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.LongDef;
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
     public final Context context;
@@ -65,7 +69,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void insertExpensesDetail(Integer plan_id, String expenses_name, Integer expenses_amount){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues2 = new ContentValues();
-        contentValues2.put("plant_ID", plan_id);
+        contentValues2.put("plan_ID", plan_id);
         contentValues2.put("expenses_Name", expenses_name);
         contentValues2.put("expenses_amount", expenses_amount);
         long result2 = MyDB.insert("ExpensesDetail", null, contentValues2);
@@ -122,6 +126,110 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return userID;
     }
+
+
+    public Integer getPlanID(String plan) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Integer plan_id = null;
+        Cursor cursor = db.rawQuery("SELECT plan_id FROM PlanDetail WHERE plan_name = ?", new String[]{plan});
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                plan_id = cursor.getInt(cursor.getColumnIndexOrThrow("plan_id"));
+            }
+            cursor.close();
+        }
+
+        return plan_id;
+    }
+
+    public Integer[] getUserPlan(Integer userid) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Integer[] userPlan = new Integer[2];
+        Cursor cursor = MyDB.rawQuery("SELECT plan_name, budget_amount FROM PlanDetail WHERE userid = ?", new String[]{String.valueOf(userid)});
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                String planName = cursor.getString(cursor.getColumnIndexOrThrow("plan_name"));
+                userPlan[0] = planName.hashCode();
+                userPlan[1] = cursor.getInt(cursor.getColumnIndexOrThrow("budget_amount"));
+            }
+            cursor.close();
+        }
+        return userPlan;
+    }
+
+
+
+    public ArrayList<String> getPlan_name(Integer userid) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        ArrayList<String> userPlans = new ArrayList<>();
+        Cursor cursor = MyDB.rawQuery("SELECT plan_name FROM PlanDetail WHERE userid = ?", new String[]{String.valueOf(userid)});
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    String planName = cursor.getString(cursor.getColumnIndexOrThrow("plan_name"));
+                    userPlans.add(planName);
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+        }
+
+        return userPlans;
+    }
+
+    public ArrayList<String> getIncome(Integer userid) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        ArrayList<String> income = new ArrayList<>();
+        Cursor cursor = MyDB.rawQuery("SELECT budget_amount FROM PlanDetail WHERE userid = ?", new String[]{String.valueOf(userid)});
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    String budget_amount = cursor.getString(cursor.getColumnIndexOrThrow("budget_amount"));
+                    income.add(budget_amount);
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+        }
+
+        return income;
+    }
+
+    public ArrayList<String> getValue(Integer planid,String expense_name) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        ArrayList<String> Vtranspo = new ArrayList<>();
+        Cursor cursor = MyDB.rawQuery("SELECT expenses_amount FROM ExpensesDetail WHERE plan_id = ? AND expenses_Name = ?", new String[]{String.valueOf(planid),expense_name});
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+
+                    String budget_Amount = cursor.getString(cursor.getColumnIndexOrThrow("expenses_amount"));
+                    Vtranspo.add(budget_Amount);
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+        }
+        return Vtranspo;
+    }
+
+
+
+
+
+    public boolean doesExpenseNameExist(String expenses_name) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT plan_name FROM PlanDetail WHERE plan_name = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{expenses_name});
+        boolean exists = cursor.moveToFirst();
+        cursor.close();
+        return exists;
+    }
+
+
+
+
 
 
 }

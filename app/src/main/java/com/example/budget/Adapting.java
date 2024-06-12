@@ -1,11 +1,15 @@
 package com.example.budget;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,10 +17,15 @@ import java.util.ArrayList;
 
 public class Adapting extends RecyclerView.Adapter<Adapting.MyViewHolder> {
     Context context;
-    ArrayList title;
+    DBHelper DB;
+    ArrayList<String> title,TranV,FoodV,BillsV,MiscV,HouseV,Income;
+    int userid;
 
-    Adapting(Context context,String title) {
-
+    Adapting(Context context,ArrayList title,int userid) {
+        DB = new DBHelper(context);
+        this.context = context;
+        this.title = title;
+        this.userid=userid;
     }
     @NonNull
     @Override
@@ -30,16 +39,58 @@ public class Adapting extends RecyclerView.Adapter<Adapting.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull Adapting.MyViewHolder holder, int position) {
 
+
+        holder.title.setText(String.valueOf(title.get(position)));
+
+
+
+         Log.d("jet",title.get(position));
+
+        holder.lay_out.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View view) {
+                int planId = DB.getPlanID(title.get(position));
+                Log.d("jet",String.valueOf(DB.getPlanID(title.get(position))));
+                TranV = DB.getValue(planId,"Transportation");
+                FoodV = DB.getValue(planId,"Food");
+                BillsV = DB.getValue(planId,"Bills");
+                HouseV = DB.getValue(planId,"Housing");
+                MiscV = DB.getValue(planId,"Miscellaneous");
+                Income = DB.getIncome(userid);
+
+                Log.d("jet",String.valueOf(position));
+                Intent i = new Intent(context,main_plan.class);
+                i.putExtra("Title",String.valueOf(title.get(position)));
+                i.putExtra("TranV",String.valueOf(TranV.get(0)));
+                i.putExtra("FoodV",String.valueOf(FoodV.get(0)));
+                i.putExtra("BillsV",String.valueOf(BillsV.get(0)));
+                i.putExtra("HouseV",String.valueOf(HouseV.get(0)));
+                i.putExtra("MiscV",String.valueOf(MiscV.get(0)));
+                i.putExtra("Income",String.valueOf(Income.get(0)));
+
+
+
+                context.startActivity(i);
+            }
+        });
+
+
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return title.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView title;
+        LinearLayout lay_out;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            title = itemView.findViewById(R.id.title_budget);
+            lay_out = itemView.findViewById(R.id.adapt_linear);
         }
     }
 }
