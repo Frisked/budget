@@ -72,11 +72,11 @@ public class add_expenses extends AppCompatActivity {
                 String text3 = Ibills.getText().toString();
                 String text4 = Ihousing.getText().toString();
                 String text5 = Imisc.getText().toString();
-                boolean isInputValid = !text1.startsWith("0") && !text1.isEmpty()
-                && !text2.startsWith("0") && !text2.isEmpty()
-                && !text3.startsWith("0") && !text3.isEmpty()
-                && !text4.startsWith("0") && !text4.isEmpty()
-                && !text5.startsWith("0") && !text5.isEmpty()  ;
+                boolean isInputValid =  !text1.isEmpty()
+                 && !text2.isEmpty()
+                 && !text3.isEmpty()
+                 && !text4.isEmpty()
+                 && !text5.isEmpty()  ;
 
                 add_exp.setEnabled(isInputValid);
             }

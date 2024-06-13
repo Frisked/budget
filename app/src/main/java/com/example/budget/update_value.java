@@ -70,11 +70,11 @@ public class update_value extends AppCompatActivity {
                 String text3 = bills_update.getText().toString();
                 String text4 = housing_update.getText().toString();
                 String text5 = misc_update.getText().toString();
-                boolean isInputValid = !text1.startsWith("0") && !text1.isEmpty()
-                        && !text2.startsWith("0") && !text2.isEmpty()
-                        && !text3.startsWith("0") && !text3.isEmpty()
-                        && !text4.startsWith("0") && !text4.isEmpty()
-                        && !text5.startsWith("0") && !text5.isEmpty()  ;
+                boolean isInputValid =   !text1.isEmpty()
+                         && !text2.isEmpty()
+                         && !text3.isEmpty()
+                         && !text4.isEmpty()
+                         && !text5.isEmpty()  ;
 
                 update.setEnabled(isInputValid);
             }
