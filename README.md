@@ -1,37 +1,83 @@
-# Smart Budget App
+# Smart Budget | Personal Finance Tracker
 
-Smart Budget App is an Android application designed to help users manage their personal finances effectively. It provides tools for tracking expenses, planning budgets, and managing financial goals, all within a user-friendly interface.
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
+![Android Studio](https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white)
 
-## Features
+> **Empower your financial journey with Smart Budget.** Track expenses, set goals, and take control of your spending habits with ease.
 
--   **User Authentication**: Secure Sign-Up and Login functionality.
--   **Expense Tracking**: Add and categorize daily expenses easily.
--   **Budget Planning**: Create monthly or weekly budget plans to stay on track.
--   **Profile Management**: Manage user details and settings.
--   **Data Persistence**: Uses local SQLite database for secure data storage.
--   **Visual Insights**: View your spending habits (implementation details based on code analysis).
+---
 
-## Technologies Used
+## 📱 Project Overview
 
--   **Language**: Java
--   **Platform**: Android
--   **Database**: SQLite
--   **Minimum SDK**: API 28 (Android 9.0)
--   **Target SDK**: API 34 (Android 14)
+**Smart Budget** is a comprehensive Android application designed to simplify personal finance management. Whether you're tracking daily coffee purchases or planning for a major vacation, this app provides the tools you need to stay organized and within budget. Built with reliability and user experience in mind, it leverages a local SQLite database to ensure your financial data remains private and accessible offline.
 
-## Getting Started
+## ✨ Key Features
 
-1.  Clone this repository.
-2.  Open the project in **Android Studio**.
-3.  Sync the project with Gradle files.
-4.  Run the application on an emulator or a physical device.
+*   **🔐 Secure Authentication**: Robust sign-up and login system to keep your data safe.
+*   **💸 Expense Tracking**: Quickly log daily expenses with categories (Food, Transport, Utilities, etc.).
+*   **📅 Intelligent Budgeting**: specific budgets for weekly or monthly periods to monitor your spending limits.
+*   **👤 Profile Management**: Customize your user profile and settings.
+*   **📊 Insightful Visuals**: (Planned Feature) Visualize spending patterns with graphs and charts.
+*   **💾 Local Data Storage**: All data is stored locally using SQLite, ensuring privacy and offline capability.
 
-## Project Structure
+## 🛠️ Built With
 
--   `MainActivity`: Main entry point of the application.
--   `DBHelper`: Handles database operations.
--   `Planner`, `main_plan`, `add_expenses`: Core logic for budgeting and expense tracking.
+*   **Language**: [Java](https://www.java.com/)
+*   **Framework**: [Android SDK](https://developer.android.com/studio) (Min SDK 28, Target SDK 34)
+*   **Database**: [SQLite](https://www.sqlite.org/index.html)
+*   **Tools**: Android Studio, Gradle
 
-## Contact
+## 📸 Screenshots
 
-Developed by **Jetrix Audrey C. Siason** (based on file context).
+*(Add your application screenshots here. Create a folder named `screenshots` in your project root and link them below)*
+
+| **Login Screen** | **Dashboard** | **Add Expense** |
+|:---:|:---:|:---:|
+| ![Login Placeholder](https://via.placeholder.com/200x400?text=Login) | ![Dashboard Placeholder](https://via.placeholder.com/200x400?text=Dashboard) | ![Expense Placeholder](https://via.placeholder.com/200x400?text=Expense) |
+
+## 🚀 Getting Started
+
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+*   [Android Studio](https://developer.android.com/studio) (Latest version recommended)
+*   Java Development Kit (JDK) 11 or higher
+
+### Installation
+
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/Frisked/budget.git
+    ```
+2.  **Open in Android Studio**
+    *   Launch Android Studio.
+    *   Select "Open an existing Android Studio project".
+    *   Navigate to the cloned directory and select it.
+3.  **Sync Gradle**
+    *   Allow Android Studio to download dependencies and sync the project.
+4.  **Run the App**
+    *   Connect an Android device or start an Emulator.
+    *   Click the **Run** button (Shift+F10).
+
+## 🤝 Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
+
+## 👤 Author
+
+**Jetrix Audrey C. Siason**
+
+*   **GitHub**: [@Frisked](https://github.com/Frisked)
+*   **Portfolio**: [Link to your portfolio if applicable]
+
+---
+*If you find this project useful, please give it a ⭐️!*
