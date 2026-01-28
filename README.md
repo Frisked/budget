@@ -29,13 +29,6 @@
 *   **Database**: [SQLite](https://www.sqlite.org/index.html)
 *   **Tools**: Android Studio, Gradle
 
-## 📸 Screenshots
-
-*(Add your application screenshots here. Create a folder named `screenshots` in your project root and link them below)*
-
-| **Login Screen** | **Dashboard** | **Add Expense** |
-|:---:|:---:|:---:|
-| ![Login Placeholder](https://via.placeholder.com/200x400?text=Login) | ![Dashboard Placeholder](https://via.placeholder.com/200x400?text=Dashboard) | ![Expense Placeholder](https://via.placeholder.com/200x400?text=Expense) |
 
 ## 🚀 Getting Started
 
@@ -77,7 +70,7 @@ Contributions are what make the open-source community such an amazing place to l
 **Jetrix Audrey C. Siason**
 
 *   **GitHub**: [@Frisked](https://github.com/Frisked)
-*   **Portfolio**: [Link to your portfolio if applicable]
+
 
 ---
 *If you find this project useful, please give it a ⭐️!*
